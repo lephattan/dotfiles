@@ -13,7 +13,7 @@ set cursorline
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
-Plug 'cloudhead/neovim-fuzzy'
+"Plug 'cloudhead/neovim-fuzzy'
 Plug 'nvie/vim-flake8'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
@@ -31,6 +31,10 @@ Plug 'ap/vim-css-color'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+" Telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Initialize plugin system
 call plug#end()
@@ -38,9 +42,15 @@ call plug#end()
 
 colorscheme gruvbox
 let python_highlight_all=1
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 
 "" My shortcuts
+""""""""""""""""""""""Telescope"""""""""""""""""""""""""""
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
 " Move lines up and down
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
@@ -49,22 +59,15 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 " Ctrl p for fuzzy search
-let g:ycm_confirm_extra_conf = 0
 set completeopt-=preview
-nnoremap <C-n> :FuzzyOpen<CR>
+"nnoremap <C-n> :FuzzyOpen<CR>
 nnoremap <leader>e :e ~/.config/nvim/init.vim<CR>
 nnoremap <leader>s :so ~/.config/nvim/init.vim<CR>
 nnoremap <leader>w :w<CR>
-nnoremap <leader>vs :vs<CR>
 nnoremap <leader>q :q<CR>
+nnoremap <leader>vs :vs<CR>
 nnoremap <c-h> :%s///g<left><left><left>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-" leader t for termainal with height of 8
-nnoremap <leader>t :8split +terminal<cr>
-tnoremap <Esc> <C-\><C-n>
-autocmd BufEnter term://* startinsert
-autocmd BufLeave term://* stopinsert
-autocmd TermOpen * startinsert
 " Resize shortcuts
 nnoremap <silent> <leader>1 :exe "vertical resize ".&columns*1/10<cr>
 nnoremap <silent> <leader>2 :exe "vertical resize ".&columns*1/5<cr>
@@ -82,7 +85,7 @@ nnoremap <C-p> :CocCommand<CR>
 imap <C-l> <Plug>(coc-snippets-expand)
 " CocFileExplorer
 nnoremap <leader>b :CocCommand explorer<CR>
-nnoremap <leader>f :CocCommand explorer --preset floating<CR>
+"nnoremap <leader>f :CocCommand explorer --preset floating<CR>
 
 " Use <C-j> for select text for visual placeholder of snippet.
 vmap <C-j> <Plug>(coc-snippets-select)
