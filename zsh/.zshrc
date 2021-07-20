@@ -85,6 +85,7 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
+export EDITOR=nvim
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -100,6 +101,8 @@ alias ohmyzsh="vi ~/.oh-my-zsh"
 alias ac="source env/bin/activate"
 alias de="deactivate"
 alias android-studio='bash /usr/local/android-studio/bin/studio.sh'
+alias settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
+alias ..="cd .."
 
 ## Android Studio
 export PATH=$PATH:~/Android/Sdk/emulator
