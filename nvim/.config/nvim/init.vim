@@ -6,8 +6,10 @@ set nowrap
 set splitright
 set splitbelow
 let mapleader=" "
-let g:python3_host_prog = expand("~/.envs/nvim/bin/python3")
 set cursorline
+let g:python3_host_prog = expand("~/.envs/nvim/bin/python3")
+let python_highlight_all=1
+set completeopt-=preview " Disable scratch preview
 
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
@@ -16,8 +18,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'nvie/vim-flake8'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
-"Plug 'powerline/powerline'
-"Plug 'vim-airline/vim-airline'
 Plug 'prettier/vim-prettier', {
 \ 'do': 'yarn install',
 \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
@@ -41,12 +41,6 @@ Plug 'hrsh7th/nvim-compe'
 " Initialize plugin system
 call plug#end()
 
-" Colors
-"let g:gruvbox_contrast_dark = 'hard'
-"if exists('+termguicolors')
-"endif
-"colorscheme gruvbox
-"set background=dark
 
 """""VIM LSP"""""
 lua << EOF
@@ -60,29 +54,6 @@ local on_attach = function(client, bufnr)
 
   --Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings.
-  local opts = { noremap=true, silent=true }
-
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  --buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -101,71 +72,9 @@ EOF
 " use omni completion provided by lsp
 autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
 " nvim-compe
-lua << EOF
--- Compe setup
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
-
-  source = {
-    path = true;
-    nvim_lsp = true;
-  };
-}
-
-local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
-local check_back_space = function()
-    local col = vim.fn.col('.') - 1
-    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
-        return true
-    else
-        return false
-    end
-end
-
--- Use (s-)tab to:
---- move to prev/next item in completion menuone
---- jump to prev/next snippet's placeholder
-_G.tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-n>"
-  elseif check_back_space() then
-    return t "<Tab>"
-  else
-    return vim.fn['compe#complete']()
-  end
-end
-_G.s_tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-p>"
-  else
-    return t "<S-Tab>"
-  end
-end
-
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-EOF
 """""END VIM LSP"""""
 
 
-let python_highlight_all=1
-"let g:airline_powerline_fonts = 1
 
 "" My shortcuts
 """"""""""""""""""""""Telescope"""""""""""""""""""""""""""
@@ -182,13 +91,17 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 " Ctrl p for fuzzy search
-set completeopt-=preview
 nnoremap <leader>e :e ~/.config/nvim/init.vim<CR>
 nnoremap <leader>s :so ~/.config/nvim/init.vim<CR>
+" Quick save
 nnoremap <leader>w :w<CR>
+" Quick quit
 nnoremap <leader>q :q<CR>
+" Quick slipt
 nnoremap <leader>vs :vs<CR>
+" Quick search and replace
 nnoremap <c-h> :%s///g<left><left><left>
+" Search current selection
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " Resize shortcuts
 nnoremap <silent> <leader>1 :exe "vertical resize ".&columns*1/10<cr>
@@ -196,10 +109,12 @@ nnoremap <silent> <leader>2 :exe "vertical resize ".&columns*1/5<cr>
 nnoremap <silent> <leader>5 :exe "vertical resize ".&columns*1/2<cr>
 nnoremap <silent> <leader>3 :exe "vertical resize ".&columns*3/10<cr>
 nnoremap <silent> <leader>7 :exe "vertical resize ".&columns*7/10<cr>
+nnoremap <silent> <leader>8 :exe "vertical resize ".&columns*8/10<cr>
 " vim-fugitive for git
 nmap <leader>gs :G<CR>
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
+nmap <leader>gc :G commit -m ""<left>
 
 " CocCommand shortcut
 nnoremap <C-p> :CocCommand<CR>
