@@ -111,10 +111,10 @@ nnoremap <silent> <leader>3 :exe "vertical resize ".&columns*3/10<cr>
 nnoremap <silent> <leader>7 :exe "vertical resize ".&columns*7/10<cr>
 nnoremap <silent> <leader>8 :exe "vertical resize ".&columns*8/10<cr>
 " vim-fugitive for git
-nmap <leader>gs :G<CR>
-nmap <leader>gh :diffget //3<CR>
-nmap <leader>gu :diffget //2<CR>
-nmap <leader>gc :G commit -m ""<left>
+"nmap <leader>gs :G<CR>
+"nmap <leader>gh :diffget //3<CR>
+"nmap <leader>gu :diffget //2<CR>
+"nmap <leader>gc :G commit -m ""<left>
 
 " CocCommand shortcut
 nnoremap <C-p> :CocCommand<CR>
