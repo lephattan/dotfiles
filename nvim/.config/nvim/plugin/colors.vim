@@ -1,4 +1,4 @@
-let g:my_colorscheme = "gruvbox"
+"let g:my_colorscheme = "gruvbox"
 fun! ColorMyPencils()
 	let g:gruvbox_contrast_dark = 'hard'
 	if exists('+termguicolors')
@@ -7,7 +7,7 @@ fun! ColorMyPencils()
 	endif
 	let g:gruvbox_invert_selection='0'
 	set background=dark
-	colorscheme gruvbox
+	"colorscheme gruvbox
 	highlight ColorColumn ctermbg=0 guibg=grey
 	hi SignColumn guibg=none
 	hi CursorLineNR guibg=None

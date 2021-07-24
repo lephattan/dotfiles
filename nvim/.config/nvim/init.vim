@@ -40,6 +40,7 @@ Plug 'hrsh7th/nvim-compe'
 
 " Initialize plugin system
 call plug#end()
+colorscheme gruvbox
 
 
 """""VIM LSP"""""
@@ -58,7 +59,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "pyright"}
+local servers = { "pyright", "intelephense"}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -110,28 +111,14 @@ nnoremap <silent> <leader>5 :exe "vertical resize ".&columns*1/2<cr>
 nnoremap <silent> <leader>3 :exe "vertical resize ".&columns*3/10<cr>
 nnoremap <silent> <leader>7 :exe "vertical resize ".&columns*7/10<cr>
 nnoremap <silent> <leader>8 :exe "vertical resize ".&columns*8/10<cr>
-" vim-fugitive for git
-"nmap <leader>gs :G<CR>
-"nmap <leader>gh :diffget //3<CR>
-"nmap <leader>gu :diffget //2<CR>
-"nmap <leader>gc :G commit -m ""<left>
+nnoremap <leader>+ :resize +5<cr>
+nnoremap <leader>- :resize -5<cr>
 
 " CocCommand shortcut
 nnoremap <C-p> :CocCommand<CR>
 " CocFileExplorer
 nnoremap <leader>b :CocCommand explorer<CR>
 "nnoremap <leader>f :CocCommand explorer --preset floating<CR>
-" Use <leader>x for convert visual selected code to snippet
-xmap <leader>x  <Plug>(coc-convert-snippet)
-" use <tab> for trigger completion and navigate to the next complete item
-"function! s:check_back_space() abort
-	"let col = col('.') - 1
-	"return !col || getline('.')[col - 1]  =~ '\s'
-"endfunction
-"inoremap <silent><expr> <Tab>
-			"\ pumvisible() ? "\<C-n>" :
-			"\ <SID>check_back_space() ? "\<Tab>" :
-			"\ coc#refresh()
 
 "" Python PEP 8 indentation
 au BufNewFile,BufRead *.py
