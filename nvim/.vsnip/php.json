@@ -1,0 +1,7 @@
+{
+  "defined ABSPATH?":{
+    "prefix": ["define"],
+    "body": "defined('ABSPATH') or die('No script kiddies please!');",
+    "description": "Check if ABSPATH is defined or die"
+  }
+}

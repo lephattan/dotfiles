@@ -9,7 +9,7 @@ let mapleader=" "
 set cursorline
 let g:python3_host_prog = expand("~/.envs/nvim/bin/python3")
 let python_highlight_all=1
-set completeopt-=preview " Disable scratch preview
+"set completeopt-=preview " Disable scratch preview
 
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
@@ -37,6 +37,16 @@ Plug 'nvim-telescope/telescope.nvim'
 " Vim LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
+" Treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/playground'
+" Snippets
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'rafamadriz/friendly-snippets'
+" vim-dirvish
+Plug 'justinmk/vim-dirvish'
+Plug 'kristijanhusak/vim-dirvish-git'
 
 " Initialize plugin system
 call plug#end()
@@ -59,7 +69,10 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "pyright", "intelephense"}
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+local servers = { "pyright", "intelephense", "cssls", "vuels", "tsserver", "tailwindcss", "html"}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -68,6 +81,9 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+require'lspconfig'.cssls.setup {
+	capabilities = capabilities,
+	}
 EOF
 
 " use omni completion provided by lsp
@@ -91,7 +107,6 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
-" Ctrl p for fuzzy search
 nnoremap <leader>e :e ~/.config/nvim/init.vim<CR>
 nnoremap <leader>s :so ~/.config/nvim/init.vim<CR>
 " Quick save
@@ -130,6 +145,7 @@ au BufNewFile,BufRead *.py
 						\ set fileformat=unix
 
 autocmd FileType vue setlocal ts=4 sw=4 sts=0 expandtab
+autocmd FileType vue set filetype=vue.html
 autocmd FileType html setlocal ts=2 sw=2 expandtab
 autocmd FileType php setlocal ts=2 sw=2 expandtab
 autocmd FileType json setlocal ts=2 sw=2 expandtab
