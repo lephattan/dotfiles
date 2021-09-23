@@ -19,17 +19,17 @@ Plug 'nvie/vim-flake8'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'prettier/vim-prettier', {
-\ 'do': 'yarn install',
-\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+			\ 'do': 'yarn install',
+			\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 Plug 'Raimondi/delimitMate'
 Plug 'preservim/nerdcommenter'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-liquid'
+"Plug 'tpope/vim-liquid'
 Plug 'ap/vim-css-color'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+"Plug 'godlygeek/tabular'
+"Plug 'plasticboy/vim-markdown'
+"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " Telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -45,8 +45,10 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'rafamadriz/friendly-snippets'
 " vim-dirvish
-Plug 'justinmk/vim-dirvish'
-Plug 'kristijanhusak/vim-dirvish-git'
+" Plug 'justinmk/vim-dirvish'
+" Plug 'kristijanhusak/vim-dirvish-git'
+" Maximizer
+Plug 'szw/vim-maximizer'
 
 " Initialize plugin system
 call plug#end()
@@ -60,11 +62,11 @@ local nvim_lsp = require('lspconfig')
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-  --Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+--Enable completion triggered by <c-x><c-o>
+buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -74,12 +76,12 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local servers = { "pyright", "intelephense", "cssls", "vuels", "tsserver", "tailwindcss", "html"}
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    }
-  }
+	nvim_lsp[lsp].setup {
+		on_attach = on_attach,
+		flags = {
+			debounce_text_changes = 150,
+			}
+		}
 end
 require'lspconfig'.cssls.setup {
 	capabilities = capabilities,
@@ -120,6 +122,9 @@ nnoremap <c-h> :%s///g<left><left><left>
 " Search current selection
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " Resize shortcuts
+nnoremap <leader>m :MaximizerToggle<CR>
+nnoremap <leader>m :MaximizerToggle<CR>gv 
+
 nnoremap <silent> <leader>1 :exe "vertical resize ".&columns*1/10<cr>
 nnoremap <silent> <leader>2 :exe "vertical resize ".&columns*1/5<cr>
 nnoremap <silent> <leader>5 :exe "vertical resize ".&columns*1/2<cr>
@@ -130,21 +135,21 @@ nnoremap <leader>+ :resize +5<cr>
 nnoremap <leader>- :resize -5<cr>
 
 " CocCommand shortcut
-nnoremap <C-p> :CocCommand<CR>
+"nnoremap <C-p> :CocCommand<CR>
 " CocFileExplorer
-nnoremap <leader>b :CocCommand explorer<CR>
+"nnoremap <leader>b :CocCommand explorer<CR>
 "nnoremap <leader>f :CocCommand explorer --preset floating<CR>
 
 "" Python PEP 8 indentation
 au BufNewFile,BufRead *.py
-						\ set tabstop=4
+			\ set tabstop=4
 "						\ set softtabstop=4
-						\ set shiftwidth=4
-						\ set expandtab
-						\ set autoindent
-						\ set fileformat=unix
+			\ set shiftwidth=4
+			\ set expandtab
+			\ set autoindent
+			\ set fileformat=unix
 
-autocmd FileType vue setlocal ts=4 sw=4 sts=0 expandtab
+autocmd FileType vue setlocal ts=2 sw=2 sts=0 expandtab
 autocmd FileType vue set filetype=vue.html
 autocmd FileType html setlocal ts=2 sw=2 expandtab
 autocmd FileType php setlocal ts=2 sw=2 expandtab
