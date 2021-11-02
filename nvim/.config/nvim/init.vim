@@ -14,8 +14,7 @@ let python_highlight_all=1
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
-"Plug 'cloudhead/neovim-fuzzy'
-Plug 'nvie/vim-flake8'
+"Plug 'nvie/vim-flake8'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'prettier/vim-prettier', {
@@ -23,13 +22,9 @@ Plug 'prettier/vim-prettier', {
 			\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 Plug 'Raimondi/delimitMate'
 Plug 'preservim/nerdcommenter'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 "Plug 'tpope/vim-liquid'
 Plug 'ap/vim-css-color'
-"Plug 'godlygeek/tabular'
-"Plug 'plasticboy/vim-markdown'
-"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " Telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -45,15 +40,40 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'rafamadriz/friendly-snippets'
 " vim-dirvish
-" Plug 'justinmk/vim-dirvish'
-" Plug 'kristijanhusak/vim-dirvish-git'
 " Maximizer
 Plug 'szw/vim-maximizer'
+" Trouble
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'folke/trouble.nvim'
+" indentLine
+Plug 'Yggdroot/indentLine'
+" Vim Inspector
+Plug 'puremourning/vimspector'
+
+" Toml files syntax
+Plug 'cespare/vim-toml'
+
+" Startup screen
+Plug 'mhinz/vim-startify'
 
 " Initialize plugin system
 call plug#end()
 colorscheme gruvbox
 
+let g:vimspector_enable_mappings = 'HUMAN'
+lua << EOF
+  require("trouble").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 
 """""VIM LSP"""""
 lua << EOF
@@ -74,7 +94,16 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local servers = { "pyright", "intelephense", "cssls", "vuels", "tsserver", "tailwindcss", "html"}
+local servers = { 
+	"pyright",
+	--"pylsp",
+	"intelephense",
+	"cssls", 
+	"vuels",
+	"tsserver",
+	"tailwindcss",
+	"html"
+	}
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup {
 		on_attach = on_attach,
@@ -102,6 +131,7 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
+
 " Move lines up and down
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
@@ -123,7 +153,7 @@ nnoremap <c-h> :%s///g<left><left><left>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " Resize shortcuts
 nnoremap <leader>m :MaximizerToggle<CR>
-nnoremap <leader>m :MaximizerToggle<CR>gv 
+"nnoremap <leader>m :MaximizerToggle<CR>gv 
 
 nnoremap <silent> <leader>1 :exe "vertical resize ".&columns*1/10<cr>
 nnoremap <silent> <leader>2 :exe "vertical resize ".&columns*1/5<cr>
@@ -149,6 +179,9 @@ au BufNewFile,BufRead *.py
 			\ set autoindent
 			\ set fileformat=unix
 
+"set updatetime=1000
+"autocmd CursorHold * silent! lua vim.lsp.diagnostic.show_line_diagnostics()
+"autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()
 autocmd FileType vue setlocal ts=2 sw=2 sts=0 expandtab
 autocmd FileType vue set filetype=vue.html
 autocmd FileType html setlocal ts=2 sw=2 expandtab
@@ -158,3 +191,4 @@ autocmd FileType MD, md setlocal ts=2 sw=2 expandtab
 autocmd FileType liquid setlocal ts=2 sw=2 expandtab
 autocmd FileType javascript setlocal ts=2 sw=2 expandtab
 autocmd FileType yaml setlocal ts=2 sw=2 expandtab
+autocmd BufRead,BufNewFile *.rules setlocal ts=2 sw=2 expandtab syntax=javascript
