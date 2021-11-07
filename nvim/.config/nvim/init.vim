@@ -185,7 +185,7 @@ au BufNewFile,BufRead *.py
 autocmd FileType vue setlocal ts=2 sw=2 sts=0 expandtab
 autocmd FileType vue set filetype=vue.html
 autocmd FileType html setlocal ts=2 sw=2 expandtab
-autocmd FileType php setlocal ts=2 sw=2 expandtab
+autocmd FileType php setlocal ts=2 sw=2 expandtab ai si
 autocmd FileType json setlocal ts=2 sw=2 expandtab
 autocmd FileType MD, md setlocal ts=2 sw=2 expandtab
 autocmd FileType liquid setlocal ts=2 sw=2 expandtab
