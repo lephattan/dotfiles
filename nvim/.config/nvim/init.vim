@@ -47,7 +47,9 @@ Plug 'hrsh7th/vim-vsnip'
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvim-treesitter/playground'
-" vim-dirvish
+" ncim-tree
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
 " Maximizer
 Plug 'szw/vim-maximizer'
 " Trouble
@@ -116,6 +118,7 @@ EOF
 "au2tocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
 " nvim-compe
 """""END VIM LSP"""""
+
 
 
 

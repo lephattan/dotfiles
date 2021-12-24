@@ -28,7 +28,8 @@ cmp.setup({
 		{ name = 'vsnip' }, -- For vsnip users.
 	}, {
 		{ name = 'buffer' },
-	})
+	}),
+  documentation = true,
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
