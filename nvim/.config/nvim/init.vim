@@ -66,6 +66,11 @@ Plug 'cespare/vim-toml'
 " Startup screen
 Plug 'mhinz/vim-startify'
 
+" nvim-gps simple status line component 
+" nvim-treesitter/nvim-treesitter"
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'SmiteshP/nvim-gps'
+
 " Initialize plugin system
 call plug#end()
 colorscheme gruvbox
