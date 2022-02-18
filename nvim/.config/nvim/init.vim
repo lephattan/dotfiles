@@ -71,6 +71,9 @@ Plug 'mhinz/vim-startify'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'SmiteshP/nvim-gps'
 
+" vim-surround
+Plug 'tpope/vim-surround'
+
 " Initialize plugin system
 call plug#end()
 colorscheme gruvbox
