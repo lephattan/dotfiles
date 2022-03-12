@@ -74,6 +74,9 @@ Plug 'SmiteshP/nvim-gps'
 " vim-surround
 Plug 'tpope/vim-surround'
 
+" Emmet
+Plug 'mattn/emmet-vim'
+
 " Initialize plugin system
 call plug#end()
 colorscheme gruvbox
