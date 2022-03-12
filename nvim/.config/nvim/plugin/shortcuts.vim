@@ -7,8 +7,8 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
-nnoremap <leader>e :e ~/.config/nvim/init.vim<CR>
-nnoremap <leader>s :so ~/.config/nvim/init.vim<CR>
+nnoremap <leader>e :e ~/.config/nvim/init.lua<CR>
+nnoremap <leader>s :so ~/.config/nvim/init.lua<CR>
 " Quick save
 nnoremap <leader>w :w<CR>
 " Quick quit
