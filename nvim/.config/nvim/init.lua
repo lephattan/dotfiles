@@ -12,5 +12,6 @@ require 'plugins'
 vim.cmd('colorscheme gruvbox')
 
 -- Nvim-lsp 
-require 'lsp'
+local lsp = require 'lsp'
+lsp.setup()
 require 'lsp_lua'
