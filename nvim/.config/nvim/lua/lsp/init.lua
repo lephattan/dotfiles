@@ -11,6 +11,7 @@ function M.setup()
     tailwindcss = {},
     html = {},
     vimls = {},
+    --sumneko_lua = {},
   }
 
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -20,16 +21,21 @@ function M.setup()
   end
 
   local nvim_lsp = require('lspconfig')
+  local options = {
+    on_attach = on_attach,
+    flags = { 
+      debounce_text_changes = 150,
+    },
+    capabilities = capabilities,
+  }
 
   for server, _ in pairs(servers) do
-    nvim_lsp[server].setup {
-      on_attach = on_attach,
-      flags = { 
-        debounce_text_changes = 150,
-      },
-      capabilities = capabilities,
-    }
+    nvim_lsp[server].setup(options)
   end
+
+  require('nlua.lsp.nvim').setup(require('lspconfig'), {
+    on_attach = on_attach,
+  })
 end
 
 return M
