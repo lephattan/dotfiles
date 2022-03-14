@@ -67,8 +67,13 @@ Plug 'tpope/vim-surround'
 Plug 'mattn/emmet-vim'
 
 Plug 'tjdevries/nlua.nvim'
-Plug 'nvim-lua/completion-nvim'
+--Plug 'nvim-lua/completion-nvim'
 Plug 'euclidianAce/BetterLua.vim'
+
+-- which-key
+Plug 'folke/which-key.nvim'
 
 vim.call('plug#end')
 
+-- which-key
+require("which-key").setup {}
