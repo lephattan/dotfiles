@@ -76,6 +76,9 @@ Plug 'folke/which-key.nvim'
 -- Signature
 Plug 'ray-x/lsp_signature.nvim'
 
+-- autopairs
+Plug 'windwp/nvim-autopairs'
+
 vim.call('plug#end')
 
 -- which-key
