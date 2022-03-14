@@ -5,6 +5,7 @@ vim.g.vimspector_enable_mappings = 'HUMAN'
 
 -- Set vim option
 vim.o.syntax = true
+vim.o.signcolumn = 'yes'
 vim.opt.number =  true
 vim.opt.relativenumber =  true
 vim.opt.wrap = false
