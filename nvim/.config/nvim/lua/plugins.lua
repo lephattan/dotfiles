@@ -73,6 +73,9 @@ Plug 'euclidianAce/BetterLua.vim'
 -- which-key
 Plug 'folke/which-key.nvim'
 
+-- Signature
+Plug 'ray-x/lsp_signature.nvim'
+
 vim.call('plug#end')
 
 -- which-key

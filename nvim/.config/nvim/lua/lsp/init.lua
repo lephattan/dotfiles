@@ -38,6 +38,14 @@ function M.setup()
   require('nlua.lsp.nvim').setup(require('lspconfig'), {
     on_attach = on_attach,
   })
+  lsp_signature = require "lsp_signature"
+  lsp_signature.setup({
+    bind = true,
+    handler_opts = {
+      border = "rounded",
+    },
+  })
+  
 end
 
 return M
