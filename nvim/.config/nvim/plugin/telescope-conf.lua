@@ -1,0 +1,10 @@
+local keymap_f = {
+  f = {
+    name = 'Telescope',
+    f = {'<cmd>Telescope find_files<cr>', 'Find files'},
+    g = {'<cmd>Telescope live_grep<cr>', 'Live grep'},
+    b = {'<cmd>Telescope buffers<cr>', 'Buffers'},
+    h = {'<cmd>Telescope help_tags<cr>', 'Help tags'}
+  }
+}
+require('which-key').register(keymap_f, {prefix = '<leader>'})
