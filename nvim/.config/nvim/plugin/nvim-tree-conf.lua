@@ -10,7 +10,7 @@ require 'nvim-tree'.setup {
 		  window_picker = {
 			  enable = true,
 			  exclude = {
-				  filetype = {'notify', 'packer', qf},
+				  filetype = {'notify', 'packer', 'qf'},
 				  buftype = {'terminal'}
 			  }
 		  }
