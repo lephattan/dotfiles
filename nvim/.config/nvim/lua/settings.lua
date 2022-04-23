@@ -2,6 +2,7 @@
 vim.g.python3_host_prog = vim.call('expand', '~/.envs/nvim/bin/python3')
 vim.g.python_highlight_all = 1
 vim.g.vimspector_enable_mappings = 'HUMAN'
+vim.o.clipboard = "unnamedplus"
 
 -- Set vim option
 vim.o.syntax = true
