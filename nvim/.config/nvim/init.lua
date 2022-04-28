@@ -15,4 +15,3 @@ vim.cmd('colorscheme gruvbox')
 require('nvim-cmp')
 local lsp = require 'lsp'
 lsp.setup()
---require 'lsp_lua'
