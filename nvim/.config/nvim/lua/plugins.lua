@@ -79,6 +79,16 @@ Plug 'ray-x/lsp_signature.nvim'
 -- autopairs
 Plug 'windwp/nvim-autopairs'
 
+-- wiki for taking notes
+--Plug 'vimwiki/vimwiki'
+
+-- vim-vue
+Plug 'posva/vim-vue'
+
+-- Specs
+Plug 'edluffy/specs.nvim'
+
+
 vim.call('plug#end')
 
 -- which-key
