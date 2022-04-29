@@ -6,7 +6,7 @@ vim.g.indentLine_setConceal = 0
 vim.o.clipboard = "unnamedplus"
 
 -- Set vim option
-vim.o.syntax = true
+vim.o.syntax = 'on'
 vim.o.signcolumn = 'yes'
 vim.opt.number =  true
 vim.opt.relativenumber =  true
