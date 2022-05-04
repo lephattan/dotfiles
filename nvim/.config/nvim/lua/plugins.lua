@@ -79,14 +79,19 @@ Plug 'ray-x/lsp_signature.nvim'
 -- autopairs
 Plug 'windwp/nvim-autopairs'
 
--- wiki for taking notes
---Plug 'vimwiki/vimwiki'
-
 -- vim-vue
 Plug 'posva/vim-vue'
 
 -- Specs
 Plug 'edluffy/specs.nvim'
+
+Plug(
+  'iamcco/markdown-preview.nvim',
+  {
+    ['do'] = '-> mkdp#util#install()',
+    ['for'] = {'markdown', 'vim-plug'},
+  }
+)
 
 
 vim.call('plug#end')
