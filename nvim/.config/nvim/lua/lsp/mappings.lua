@@ -18,7 +18,8 @@ function M.setup(client, bufnr)
       i = {"<cmd>LspInfo<CR>", "LSP Info"}
     }
   }
-  if client.resolved_capabilities.document_formatting then
+  --if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.document_formatting then
     keymap_l.l.f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Document" }
   end
 

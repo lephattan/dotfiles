@@ -1,6 +1,8 @@
 -- Map leader to space
 vim.g.mapleader = ' '
 
+-- Load helper funcs
+require 'helpers'
 
 -- Sensible defaults
 require 'settings'

@@ -97,4 +97,8 @@ Plug(
 vim.call('plug#end')
 
 -- which-key
-require("which-key").setup {}
+if isModuleAvailable('which-key') then
+  require("which-key").setup {}
+else
+  vim.api.nvim_echo({{'which-key is  not available', 'None'}}, false, {})
+end
