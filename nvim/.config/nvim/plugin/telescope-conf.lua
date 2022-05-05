@@ -1,3 +1,8 @@
+require('telescope').setup({
+  defaults = {
+    layout_strategy = 'vertical',
+  },
+})
 local keymap_f = {
   f = {
     name = 'Telescope',
