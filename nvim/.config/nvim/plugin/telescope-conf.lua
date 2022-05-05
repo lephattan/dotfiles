@@ -12,4 +12,6 @@ local keymap_f = {
     h = {'<cmd>Telescope help_tags<cr>', 'Help tags'}
   }
 }
-require('which-key').register(keymap_f, {prefix = '<leader>'})
+if isModuleAvailable('which-key') then
+  require('which-key').register(keymap_f, {prefix = '<leader>'})
+end
