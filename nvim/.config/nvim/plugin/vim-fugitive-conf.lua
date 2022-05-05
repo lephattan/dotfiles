@@ -7,4 +7,6 @@ local keymap_g = {
   }
 }
 
-require('which-key').register(keymap_g, {prefix = '<leader>'})
+if isModuleAvailable('which-key') then
+  require('which-key').register(keymap_g, {prefix = '<leader>'})
+end

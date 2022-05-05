@@ -3,7 +3,6 @@ require("trouble").setup {
   -- or leave it empty to use the default settings
 }
 
-local whichkey = require('which-key')
 local keymap_x = {
   x = {
     name = 'Trouble',
@@ -15,4 +14,6 @@ local keymap_x = {
   },
 }
 
-whichkey.register(keymap_x, {prefix = '<leader>'})
+if isModuleAvailable('which-key') then
+  require('which-key').register(keymap_x, {prefix = '<leader>'})
+end
