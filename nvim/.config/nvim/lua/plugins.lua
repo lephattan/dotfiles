@@ -45,12 +45,17 @@ return require('packer').startup(function(use)
 	-- Maximizer
 	use 'szw/vim-maximizer'
 
+	-- Comment
 	use {
 		'numToStr/Comment.nvim',
 		config = function()
 			require('Comment').setup()
 		end
 	}
+
+	-- Start screen
+	use 'mhinz/vim-startify'
+	
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	

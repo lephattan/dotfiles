@@ -1,3 +1,4 @@
+local g = vim.g
 -- Vim global options
 vim.g.python3_host_prog = vim.call('expand', '~/.envs/nvim/bin/python3')
 vim.g.python_highlight_all = 1
@@ -15,3 +16,10 @@ vim.opt.splitright =  true
 vim.opt.splitbelow = true
 vim.opt.cursorline =  true
 vim.o.completeopt="menuone,noinsert,noselect"
+g.startify_lists = {
+	{type='sessions', header={'Sessions'}},
+	{type='files', header= {'MRU'}},
+	{type='dir', header={'MRU'..vim.fn.getcwd()}},
+	{type='bookmarks', header={'Bookmarks'}},
+	{type='commands', header={'Commands'}},
+}
