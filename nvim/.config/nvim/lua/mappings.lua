@@ -12,6 +12,10 @@ keymap('i', '<A-k>', '<Esc>:m .-2<CR>==gi', opts)
 keymap('v', 'A-j', ":m '>+1<CR>gv=gv", opts )
 keymap('v', 'A-k', ":m '>-2<CR>gv=gv", opts )
 
+keymap('n', '<leader>5', ':exe "vertical resize ".&columns*1/2<cr>', opts)
+keymap('n', '<leader>=', ':resize +5<cr>', opts)
+keymap('n', '<leader>-', ':resize -5<cr>', opts)
+
 local fugitive= {
   g = {
     name = 'Git',
@@ -22,6 +26,7 @@ local fugitive= {
 }
 
 if isModuleAvailable('which-key') then
-  require('which-key').register(fugitive, {prefix = '<leader>'})
+	local whichKey = require('which-key')
+	whichKey.register(fugitive, {prefix = '<leader>'})
 end
 
