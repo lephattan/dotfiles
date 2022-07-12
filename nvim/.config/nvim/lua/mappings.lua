@@ -25,8 +25,18 @@ local fugitive= {
   }
 }
 
+local trouble = {
+	x = {
+		name = 'Trouble',
+		x = {'<cmd>TroubleToggle<cr>', 'Toggle Trouble'},
+		w = {'<cmd>TroubleToggle workspace_diagnostics<cr>', 'Toggle Workspace Trouble'},
+		d = {'<cmd>TroubleToggle document_diagnostics<cr>', 'Toggle Document Trouble'},
+	},
+}
+
 if isModuleAvailable('which-key') then
 	local whichKey = require('which-key')
 	whichKey.register(fugitive, {prefix = '<leader>'})
+	whichKey.register(trouble, {prefix = '<leader>'})
 end
 
