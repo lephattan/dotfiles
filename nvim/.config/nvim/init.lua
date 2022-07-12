@@ -12,3 +12,5 @@ lsp.setup()
 -- Activate colorscheme
 vim.cmd('colorscheme gruvbox')
 
+require("nvim-autopairs").setup {}
+require('Comment').setup()
