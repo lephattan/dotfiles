@@ -19,3 +19,4 @@ autocmd FileType javascript setlocal ts=2 sw=2 expandtab
 autocmd FileType yaml setlocal ts=2 sw=2 expandtab
 autocmd FileType lua setlocal ts=2 sw=2 expandtab
 autocmd BufRead,BufNewFile *.rules setlocal ts=2 sw=2 expandtab
+autocmd FileType css setlocal ts=2 sw=2 expandtab
