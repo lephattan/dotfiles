@@ -68,3 +68,4 @@ require 'nvim-tree'.setup {
     },
   },
 }
+

@@ -15,4 +15,3 @@ vim.opt.splitright =  true
 vim.opt.splitbelow = true
 vim.opt.cursorline =  true
 vim.o.completeopt="menuone,noinsert,noselect"
-

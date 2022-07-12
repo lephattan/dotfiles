@@ -18,7 +18,7 @@ function M.setup()
 
   local function on_attach(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-    local keymap = require('lsp.mappings')
+    --local keymap = require('lsp.mappings')
     keymap.setup(client, bufnr)
   end
 
@@ -35,16 +35,10 @@ function M.setup()
     nvim_lsp[server].setup(options)
   end
 
-  require('nlua.lsp.nvim').setup(require('lspconfig'), {
-    on_attach = on_attach,
-  })
-  local lsp_signature = require "lsp_signature"
-  lsp_signature.setup({
-    bind = true,
-    handler_opts = {
-      border = "rounded",
-    },
-  })
+  --require('nlua.lsp.nvim').setup(require('lspconfig'), {
+  --  on_attach = on_attach,
+  --})
+
   
 end
 
