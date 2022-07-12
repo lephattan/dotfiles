@@ -16,12 +16,25 @@ return require('packer').startup(function(use)
 	}
 
 	use 'morhetz/gruvbox'
+	-- LSP
 	use 'neovim/nvim-lspconfig'
+	--CMP
 	use 'hrsh7th/cmp-nvim-lsp'
 	use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/cmp-path'
 	use 'hrsh7th/cmp-cmdline'
 	use 'hrsh7th/nvim-cmp'
+	-- Git
+	use 'tpope/vim-fugitive'
+
+	-- Which key for Mapping management
+	use {
+		'folke/which-key.nvim',
+		config = function()
+			require("which-key").setup {
+			}
+		end
+	}
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
