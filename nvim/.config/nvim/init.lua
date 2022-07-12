@@ -3,6 +3,7 @@ require('helpers')
 require('mappings')
 require('settings')
 require('plugins')
+require('autocmd')
 
 -- Nvim-lsp 
 require('nvim-cmp')

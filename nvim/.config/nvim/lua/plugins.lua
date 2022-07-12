@@ -55,6 +55,8 @@ return require('packer').startup(function(use)
 
 	-- Start screen
 	use 'mhinz/vim-startify'
+
+	-- Troble
 	use {
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
@@ -66,6 +68,9 @@ return require('packer').startup(function(use)
 			}
 		end
 	}
+
+	-- Debug Adapter
+	-- use 'mfussenegger/nvim-dap'
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 
