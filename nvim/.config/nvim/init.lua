@@ -6,7 +6,7 @@ require('plugins')
 
 -- Nvim-lsp 
 require('nvim-cmp')
-local lsp = require 'lsp'
+local lsp = require('lsp')
 lsp.setup()
 
 -- Activate colorscheme

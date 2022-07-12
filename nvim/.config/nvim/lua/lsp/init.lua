@@ -19,7 +19,7 @@ function M.setup()
   local function on_attach(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
     --local keymap = require('lsp.mappings')
-    keymap.setup(client, bufnr)
+    --keymap.setup(client, bufnr)
   end
 
   local nvim_lsp = require('lspconfig')
