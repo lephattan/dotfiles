@@ -1,8 +1,10 @@
 vim.g.mapleader = ' '
 
+local keymap = vim.api.nvim_set_keymap
 local opts = {noremap = true, silent = true }
 
-vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<cr>', opts)
+keymap('n', '<C-n>', ':NvimTreeToggle<cr>', opts)
+keymap('n', '<leader>m', ':MaximizerToggle<cr>', opts)
 
 local fugitive= {
   g = {
