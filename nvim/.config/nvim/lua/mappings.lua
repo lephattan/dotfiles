@@ -34,9 +34,31 @@ local trouble = {
 	},
 }
 
+local dap_mappings = {
+  d = {
+    name =  'Debug Adaptor',
+    i = {function() require"dap.ui.widgets".hover() end, 'Widgets hover'},
+    c = {function() require'dap'.continue() end, 'Start/Continue debug'},
+    t = {function() require'dap'.terminate() end, 'Terminate Session'},
+    r = {function() require'dap'.repl.toggle() end, 'Toogle Repl'},
+    l = {function() require'dap'.run_last() end, 'Run last'},
+  },
+  b = {function() require('dap').toggle_breakpoint() end, 'Toggle Breakpoint'},
+  B = {function() require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, 'Toogle Conditional Breakpoint'},
+  lp = {function() require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, 'Set log point'}
+}
+dap_mappings['d']['/'] = {function() local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes) end, 'Floating scopes'}
+
+dap_naked_mappings = {}
+dap_naked_mappings['<C-j>'] = {function() require'dap'.step_into() end, 'DAP Step into'}
+dap_naked_mappings['<C-k>'] = {function() require'dap'.step_out() end, 'DAP Step out'}
+dap_naked_mappings['<C-h>'] = {function() require'dap'.step_over() end, 'DAP Step over' }
+
 if isModuleAvailable('which-key') then
 	local whichKey = require('which-key')
 	whichKey.register(fugitive, {prefix = '<leader>'})
 	whichKey.register(trouble, {prefix = '<leader>'})
+  whichKey.register(dap_mappings, {prefix = '<leader>'})
+  whichKey.register(dap_naked_mappings)
 end
 

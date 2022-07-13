@@ -1,80 +1,79 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-	packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
 return require('packer').startup(function(use)
-	-- My plugins here
-	use 'wbthomason/packer.nvim'
+  -- My plugins here
+  use 'wbthomason/packer.nvim'
 
-	use {
-		'kyazdani42/nvim-tree.lua',
-		requires = {
-			'kyazdani42/nvim-web-devicons', -- optional, for file icons
-		},
-	}
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icons
+    },
+  }
 
-	use 'morhetz/gruvbox'
-	-- LSP
-	use 'neovim/nvim-lspconfig'
-	--CMP
-	use 'hrsh7th/cmp-nvim-lsp'
-	use 'hrsh7th/cmp-buffer'
-	use 'hrsh7th/cmp-path'
-	use 'hrsh7th/cmp-cmdline'
-	use 'hrsh7th/nvim-cmp'
-	-- Git
-	use 'tpope/vim-fugitive'
+  use 'morhetz/gruvbox'
+  -- LSP
+  use 'neovim/nvim-lspconfig'
+  --CMP
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
+  -- Git
+  use 'tpope/vim-fugitive'
 
-	-- Which key for Mapping management
-	use {
-		'folke/which-key.nvim',
-		config = function()
-			require("which-key").setup {
-			}
-		end
-	}
+  -- Which key for Mapping management
+  use {
+    'folke/which-key.nvim',
+    config = function()
+      require("which-key").setup { }
+    end
+  }
 
-	-- Auto-pairs
-	use {
-		"windwp/nvim-autopairs",
-		config = function() require("nvim-autopairs").setup {} end
-	}
+  -- Auto-pairs
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
 
-	-- Maximizer
-	use 'szw/vim-maximizer'
+  -- Maximizer
+  use 'szw/vim-maximizer'
 
-	-- Comment
-	use {
-		'numToStr/Comment.nvim',
-		config = function()
-			require('Comment').setup()
-		end
-	}
+  -- Comment
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
 
-	-- Start screen
-	use 'mhinz/vim-startify'
+  -- Start screen
+  use 'mhinz/vim-startify'
 
-	-- Troble
-	use {
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("trouble").setup {
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			}
-		end
-	}
+  -- Troble
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup { }
+    end
+  }
 
-	-- Debug Adapter
-	-- use 'mfussenegger/nvim-dap'
-	-- Automatically set up your configuration after cloning packer.nvim
-	-- Put this at the end after all plugins
+  -- Debug Adapter
+  use {'mfussenegger/nvim-dap',
+  requires = {
+    'mfussenegger/nvim-dap-python',
+  }
+}
+-- Automatically set up your configuration after cloning packer.nvim
+-- Put this at the end after all plugins
 
-	if packer_bootstrap then
-		require('packer').sync()
-	end
+if packer_bootstrap then
+  require('packer').sync()
+end
 end)

@@ -1,4 +1,3 @@
-
 require('helpers')
 require('mappings')
 require('settings')
@@ -13,5 +12,6 @@ lsp.setup()
 -- Activate colorscheme
 vim.cmd('colorscheme gruvbox')
 
+require('nvim-dap')
 require("nvim-autopairs").setup {}
 require('Comment').setup()
