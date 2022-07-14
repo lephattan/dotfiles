@@ -6,4 +6,6 @@ vim.fn.sign_define('DapLogPoint', {text='📄', texthl='', linehl='', numhl=''})
 vim.fn.sign_define('DapBreakpointRejected', {text='🟦', texthl='', linehl='', numhl=''})
 vim.fn.sign_define('DapStopped', {text='⭐️', texthl='', linehl='', numhl=''})
 
+require('dap.ext.vscode').load_launchjs()
+
 require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')

@@ -16,6 +16,10 @@ keymap('n', '<leader>5', ':exe "vertical resize ".&columns*1/2<cr>', opts)
 keymap('n', '<leader>=', ':resize +5<cr>', opts)
 keymap('n', '<leader>-', ':resize -5<cr>', opts)
 
+local default = {
+  s = {'<cmd>so ~/.config/nvim/init.lua<CR>', 'Reload Init file'},
+}
+
 local fugitive= {
   g = {
     name = 'Git',
@@ -38,9 +42,9 @@ local dap_mappings = {
   d = {
     name =  'Debug Adaptor',
     i = {function() require"dap.ui.widgets".hover() end, 'Widgets hover'},
-    c = {function() require'dap'.continue() end, 'Start/Continue debug'},
+    c = {function() local dap = require'dap'; dap.continue(); dap.repl.open({}, "vsplit") end, 'Start/Continue debug'},
     t = {function() require'dap'.terminate() end, 'Terminate Session'},
-    r = {function() require'dap'.repl.toggle() end, 'Toogle Repl'},
+    r = {function() require'dap'.repl.toggle({}, 'vsplit') end, 'Toogle Repl'},
     l = {function() require'dap'.run_last() end, 'Run last'},
   },
   b = {function() require('dap').toggle_breakpoint() end, 'Toggle Breakpoint'},
@@ -60,5 +64,6 @@ if isModuleAvailable('which-key') then
 	whichKey.register(trouble, {prefix = '<leader>'})
   whichKey.register(dap_mappings, {prefix = '<leader>'})
   whichKey.register(dap_naked_mappings)
+  whichKey.register(default, {prefix = '<leader>'})
 end
 
