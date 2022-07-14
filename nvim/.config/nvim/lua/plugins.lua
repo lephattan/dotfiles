@@ -70,6 +70,8 @@ return require('packer').startup(function(use)
     'mfussenegger/nvim-dap-python',
   }
 }
+-- Surround 
+use 'tpope/vim-surround'
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 
