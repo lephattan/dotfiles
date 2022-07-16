@@ -80,8 +80,14 @@ return require('packer').startup(function(use)
     'SirVer/ultisnips',
     requires = 'quangnguyen30192/cmp-nvim-ultisnips'
   }
--- Surround 
-use 'tpope/vim-surround'
+  -- Surround 
+  use 'tpope/vim-surround'
+
+  -- Telescope
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 

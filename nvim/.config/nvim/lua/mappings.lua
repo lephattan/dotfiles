@@ -58,6 +58,16 @@ dap_naked_mappings['<C-j>'] = {function() require'dap'.step_into() end, 'DAP Ste
 dap_naked_mappings['<C-k>'] = {function() require'dap'.step_out() end, 'DAP Step out'}
 dap_naked_mappings['<C-h>'] = {function() require'dap'.step_over() end, 'DAP Step over' }
 
+local telescope = {
+  f = {
+    name= 'Telescope Find ...',
+    f = {'<cmd>Telescope find_files<cr>', 'Find files'},
+    g = {'<cmd>Telescope live_grep<cr>', 'Live grep'},
+    b = {'<cmd>Telescope buffers<cr>', 'Find in buffers'},
+    h = {'<cmd>Telescope help_tags<cr>', 'Find in help tags'},
+  }
+}
+
 if isModuleAvailable('which-key') then
 	local whichKey = require('which-key')
 	whichKey.register(fugitive, {prefix = '<leader>'})
@@ -65,5 +75,6 @@ if isModuleAvailable('which-key') then
   whichKey.register(dap_mappings, {prefix = '<leader>'})
   whichKey.register(dap_naked_mappings)
   whichKey.register(default, {prefix = '<leader>'})
+  whichKey.register(telescope, {prefix = '<leader>'})
 end
 
