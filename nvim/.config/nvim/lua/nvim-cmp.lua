@@ -3,6 +3,9 @@ local cmp = require('cmp')
 
 cmp.setup({
 	snippet = {
+    expand = function(args)
+      vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+    end
 	},
 	mapping = {
 		['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
@@ -23,9 +26,10 @@ cmp.setup({
   sources = {
     {name = 'nvim_lsp'},
     {name = 'buffer'},
-    {name = 'treesitter'},
+    { name = 'ultisnips' },
+    -- {name = 'treesitter'},
     {name = 'path'},
-    {name = 'nvim_lua'},
+    -- {name = 'nvim_lua'},
   },
   window = {
     documentation = {

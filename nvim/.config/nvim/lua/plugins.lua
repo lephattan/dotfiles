@@ -68,8 +68,14 @@ return require('packer').startup(function(use)
   use {'mfussenegger/nvim-dap',
   requires = {
     'mfussenegger/nvim-dap-python',
+    }
   }
-}
+
+  -- Snippets
+  use {
+    'SirVer/ultisnips',
+    requires = 'quangnguyen30192/cmp-nvim-ultisnips'
+  }
 -- Surround 
 use 'tpope/vim-surround'
 -- Automatically set up your configuration after cloning packer.nvim
