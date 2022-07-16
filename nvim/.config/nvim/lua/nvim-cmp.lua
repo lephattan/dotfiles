@@ -27,7 +27,7 @@ cmp.setup({
     {name = 'nvim_lsp'},
     {name = 'buffer'},
     { name = 'ultisnips' },
-    -- {name = 'treesitter'},
+    {name = 'treesitter'},
     {name = 'path'},
     -- {name = 'nvim_lua'},
   },

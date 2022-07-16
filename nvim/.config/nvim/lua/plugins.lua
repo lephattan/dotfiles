@@ -26,6 +26,7 @@ return require('packer').startup(function(use)
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
+      { 'ray-x/cmp-treesitter' },
     },
   }
   -- Git
@@ -87,6 +88,18 @@ return require('packer').startup(function(use)
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  -- Treesitter
+  use { 
+    'nvim-treesitter/nvim-treesitter', 
+    run = ':TSUpdate', 
+    requires = {
+      { 'JoosepAlviste/nvim-ts-context-commentstring' },
+      {'nvim-treesitter/nvim-treesitter-context'},
+      {'JoosepAlviste/nvim-ts-context-commentstring'},
+
+    }
   }
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins

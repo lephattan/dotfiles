@@ -15,3 +15,4 @@ vim.cmd('colorscheme gruvbox')
 require('nvim-dap')
 require("nvim-autopairs").setup {}
 require('Comment').setup()
+require('treesitter')
