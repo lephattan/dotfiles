@@ -97,8 +97,6 @@ return require('packer').startup(function(use)
     requires = {
       { 'JoosepAlviste/nvim-ts-context-commentstring' },
       {'nvim-treesitter/nvim-treesitter-context'},
-      {'JoosepAlviste/nvim-ts-context-commentstring'},
-
     }
   }
 -- Automatically set up your configuration after cloning packer.nvim
