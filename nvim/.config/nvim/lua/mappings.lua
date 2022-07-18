@@ -42,7 +42,7 @@ local dap_mappings = {
   d = {
     name =  'Debug Adaptor',
     i = {function() require"dap.ui.widgets".hover() end, 'Widgets hover'},
-    c = {function() local dap = require'dap'; dap.continue(); dap.repl.open({}, "vsplit") end, 'Start/Continue debug'},
+    c = {function() require('dap.ext.vscode').load_launchjs(); local dap = require'dap'; dap.continue() end, 'Start/Continue debug'},
     t = {function() require'dap'.terminate() end, 'Terminate Session'},
     r = {function() require'dap'.repl.toggle({}, 'vsplit') end, 'Toogle Repl'},
     l = {function() require'dap'.run_last() end, 'Run last'},

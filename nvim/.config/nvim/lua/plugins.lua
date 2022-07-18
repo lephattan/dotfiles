@@ -73,6 +73,8 @@ return require('packer').startup(function(use)
   use {'mfussenegger/nvim-dap',
   requires = {
     'mfussenegger/nvim-dap-python',
+    'rcarriga/nvim-dap-ui',
+    'theHamsta/nvim-dap-virtual-text',
     }
   }
 
