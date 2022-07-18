@@ -101,6 +101,13 @@ return require('packer').startup(function(use)
       {'nvim-treesitter/nvim-treesitter-context'},
     }
   }
+
+  -- Todo comments
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function() require("todo-comments").setup() end
+  }
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 

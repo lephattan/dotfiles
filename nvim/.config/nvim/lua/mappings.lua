@@ -65,6 +65,7 @@ local telescope = {
     g = {'<cmd>Telescope live_grep<cr>', 'Live grep'},
     b = {'<cmd>Telescope buffers<cr>', 'Find in buffers'},
     h = {'<cmd>Telescope help_tags<cr>', 'Find in help tags'},
+    t = {'<cmd>TodoTelescope<cr>', 'Find TODOs'},
   }
 }
 
