@@ -16,6 +16,8 @@ keymap('n', '<leader>5', ':exe "vertical resize ".&columns*1/2<cr>', opts)
 keymap('n', '<leader>=', ':resize +5<cr>', opts)
 keymap('n', '<leader>-', ':resize -5<cr>', opts)
 
+keymap('i', '<C-c>', '<Esc>', opts)
+
 local default = {
   s = {'<cmd>so ~/.config/nvim/init.lua<CR>', 'Reload Init file'},
 }
