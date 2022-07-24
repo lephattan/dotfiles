@@ -11,6 +11,8 @@ require('nvim-cmp')
 local lsp = require('lsp')
 lsp.setup()
 
+require('nvim-dap')
+
 -- Activate colorscheme
 vim.cmd('colorscheme gruvbox')
 vim.cmd('highlight Normal ctermbg=none guibg=none')
