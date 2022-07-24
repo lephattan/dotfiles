@@ -28,6 +28,7 @@ local fugitive= {
     s = {'<cmd>G<CR>', 'Git status'},
     h = {'<cmd>diffget //3<CR>', 'Diffget 3'},
     u = {'<cmd>diffget //2<CR>', 'Diffget 2'},
+    l = {'<cmd>G log<cr>', 'Git log'},
   }
 }
 
