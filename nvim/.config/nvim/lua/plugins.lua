@@ -108,6 +108,16 @@ return require('packer').startup(function(use)
     requires = "nvim-lua/plenary.nvim",
     config = function() require("todo-comments").setup() end
   }
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    config = function()
+      require('lualine').setup({
+        theme = 'gruvbox',
+      })
+    end
+  }
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 
