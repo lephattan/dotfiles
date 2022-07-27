@@ -49,6 +49,7 @@ local dap_mappings = {
     t = {function() require'dap'.terminate() end, 'Terminate Session'},
     r = {function() require'dap'.repl.toggle({}, 'vsplit') end, 'Toogle Repl'},
     l = {function() require'dap'.run_last() end, 'Run last'},
+    u = {function() require("dapui").toggle() end, 'Toggle UI' },
   },
   b = {function() require('dap').toggle_breakpoint() end, 'Toggle Breakpoint'},
   B = {function() require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, 'Toogle Conditional Breakpoint'},
@@ -57,9 +58,9 @@ local dap_mappings = {
 dap_mappings['d']['/'] = {function() local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes) end, 'Floating scopes'}
 
 dap_naked_mappings = {}
-dap_naked_mappings['<C-j>'] = {function() require'dap'.step_into() end, 'DAP Step into'}
-dap_naked_mappings['<C-k>'] = {function() require'dap'.step_out() end, 'DAP Step out'}
-dap_naked_mappings['<C-h>'] = {function() require'dap'.step_over() end, 'DAP Step over' }
+dap_naked_mappings['<C-j>'] = {function() require'dap'.step_over() end, 'DAP Step into'}
+dap_naked_mappings['<C-k>'] = {function() require'dap'.step_into() end, 'DAP Step out'}
+dap_naked_mappings['<C-h>'] = {function() require'dap'.step_out() end, 'DAP Step over' }
 
 local telescope = {
   f = {
