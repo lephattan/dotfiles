@@ -118,6 +118,14 @@ return require('packer').startup(function(use)
       })
     end
   }
+
+  -- Signature
+  use {
+    "ray-x/lsp_signature.nvim",
+    config = function()
+      require "lsp_signature".setup()
+    end,
+  }
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 
