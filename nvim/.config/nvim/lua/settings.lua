@@ -29,3 +29,4 @@ vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
 vim.o.smartindent = true
 vim.o.mouse = nil
+vim.o.ph = 10
