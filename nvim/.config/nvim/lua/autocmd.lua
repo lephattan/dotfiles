@@ -22,3 +22,7 @@ create_autocmd({'FileType'}, {
   command=[[setlocal ai si]],
 })
 
+create_autocmd({'FileType'}, {
+  pattern={'markdown'},
+  command=[[setlocal wrap linebreak]],
+})
