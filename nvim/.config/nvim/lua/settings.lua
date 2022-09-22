@@ -30,3 +30,6 @@ vim.o.softtabstop = 2
 vim.o.smartindent = true
 vim.o.mouse = nil
 vim.o.ph = 10
+
+-- Snippet
+vim.g.UltiSnipsSnippetDirectories = { "UltiSnips", '$HOME/.config/nvim/UltiSnips' }
