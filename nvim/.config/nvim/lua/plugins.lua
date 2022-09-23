@@ -47,7 +47,18 @@ return require('packer').startup(function(use)
   }
 
   -- Maximizer
-  use 'szw/vim-maximizer'
+  -- use 'szw/vim-maximizer'
+  use { "anuvyklack/windows.nvim",
+    requires = {
+      "anuvyklack/middleclass",
+    },
+    config = function()
+      vim.o.winwidth = 10
+      vim.o.winminwidth = 10
+      vim.o.equalalways = false
+      require('windows').setup()
+    end
+  }
 
   -- Comment
   use {

@@ -4,7 +4,8 @@ local keymap = vim.api.nvim_set_keymap
 local opts = {noremap = true, silent = true }
 
 keymap('n', '<C-n>', ':NvimTreeToggle<cr>', opts)
-keymap('n', '<leader>m', ':MaximizerToggle<cr>', opts)
+-- keymap('n', '<leader>m', ':MaximizerToggle<cr>', opts)
+keymap('n', '<leader>m', '<Cmd>WindowsMaximize<CR>', opts)
 keymap('n', '<A-j>', ':m .+1<CR>==', opts)
 keymap('n', '<A-k>', ':m .-2<CR>==', opts)
 keymap('i', '<A-j>', '<Esc>:m .+1<CR>==gi', opts)
