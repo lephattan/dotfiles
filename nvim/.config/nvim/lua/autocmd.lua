@@ -13,7 +13,8 @@ api.nvim_create_autocmd(
 
 create_autocmd({'FileType'}, {
   pattern={'vue'},
-  command=[[setlocal sts=0 expandtab|set filetype=vue.html]],
+  -- command=[[setlocal sts=0 expandtab|set filetype=vue.html]],
+  command=[[setlocal sts=0 expandtab|set filetype=vue]],
 })
 
 

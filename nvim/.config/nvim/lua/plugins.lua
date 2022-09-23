@@ -51,11 +51,25 @@ return require('packer').startup(function(use)
 
   -- Comment
   use {
-    'numToStr/Comment.nvim',
+    'JoosepAlviste/nvim-ts-context-commentstring',
     config = function()
-      require('Comment').setup()
+      require'nvim-treesitter.configs'.setup {
+        context_commentstring = {
+          enable = true,
+          enable_autocmd = false,
+        }
+      }
     end
   }
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup({
+        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+      })
+    end
+  }
+
 
   -- Start screen
   use 'mhinz/vim-startify'
