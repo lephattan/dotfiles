@@ -152,9 +152,19 @@ return require('packer').startup(function(use)
     end,
   }
 
+  -- Markdown preview
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
+  -- Indent blankline
   use "lukas-reineke/indent-blankline.nvim"
+
+  -- Git signs
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
