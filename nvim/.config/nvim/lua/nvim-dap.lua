@@ -3,8 +3,8 @@ local dapui = require("dapui")
 local dappython = require('dap-python')
 
 dapui.setup()
-dappython.setup('~/.virtualenvs/debugpy/bin/python')
 require("nvim-dap-virtual-text").setup()
+dappython.setup('~/.virtualenvs/debugpy/bin/python')
 
 table.insert(require('dap').configurations.python, {
   type = 'python',

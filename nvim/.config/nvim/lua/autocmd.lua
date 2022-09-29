@@ -27,3 +27,8 @@ create_autocmd({'FileType'}, {
   pattern={'markdown'},
   command=[[setlocal wrap linebreak]],
 })
+
+create_autocmd({'BufNewFile', 'BufRead'}, {
+  pattern={'*.conf.template'},
+  command=[[set filetype=conf]],
+})

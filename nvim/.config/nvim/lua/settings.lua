@@ -33,3 +33,6 @@ vim.o.ph = 10
 
 -- Snippet
 vim.g.UltiSnipsSnippetDirectories = { "UltiSnips", '$HOME/.config/nvim/UltiSnips' }
+
+-- Indent blankline
+vim.g.indentLine_fileTypeExclude = { 'startify' }

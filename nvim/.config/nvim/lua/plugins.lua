@@ -165,6 +165,16 @@ return require('packer').startup(function(use)
       require('gitsigns').setup()
     end
   }
+  use {
+    'williamboman/mason.nvim',
+    requires = {'williamboman/mason-lspconfig.nvim'},
+    config = function()
+      require("mason").setup()
+      require("mason-lspconfig").setup({
+        ensure_installed = { "sumneko_lua"},
+      })
+    end
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
