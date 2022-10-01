@@ -9,6 +9,7 @@ vim.o.clipboard = "unnamedplus"
 -- Set vim option
 vim.o.syntax = 'on'
 vim.o.signcolumn = 'yes'
+vim.opt.fillchars = { eob = ' ' }
 vim.opt.number =  true
 vim.opt.relativenumber =  true
 vim.opt.wrap = false
