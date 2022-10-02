@@ -114,8 +114,18 @@ prompt_dir() {
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-
+# python env prompt 
+export VIRTUAL_ENV_DISABLE_PROMPT=yes
+prompt_virtualenv() {
+  if [[ -n $VIRTUAL_ENV ]]; then
+    color=cyan
+    prompt_segment $color white
+    print -Pn "\UE73C $(basename $(dirname $VIRTUAL_ENV))"
+  fi
+}
 if test -f ~/.scripts/scripts.sh; then
 	source ~/.scripts/scripts.sh
 fi
 
+# Fig post block. Keep at the bottom of this file.
+export GTK_IM_MODULE=ibus

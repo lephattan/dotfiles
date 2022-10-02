@@ -9,6 +9,7 @@ function M.setup(client, bufnr)
   keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts )
   keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+  keymap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
 
   -- which-key
   if isModuleAvailable('which-key') then
@@ -16,13 +17,12 @@ function M.setup(client, bufnr)
     local keymap_l = {
       l = {
         name = "Code",
-        i = {"<cmd>LspInfo<CR>", "LSP Info"}
+        i = {"<cmd>LspInfo<CR>", "LSP Info"},
+        r = {'<cmd>LspRestart<CR>', 'LSP Restart'},
+        a = {'<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code actiona'},
+        f = {'<cmd>lua vim.lsp.buf.formatting()<CR>', "Format Document" },
       }
     }
-    --if client.resolved_capabilities.document_formatting then
-    if client.server_capabilities.document_formatting then
-      keymap_l.l.f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Document" }
-    end
 
     local keymap_g = {
       name = 'Goto',

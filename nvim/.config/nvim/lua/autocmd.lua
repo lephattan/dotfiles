@@ -5,7 +5,7 @@ api.nvim_create_autocmd(
 {'BufNewFile', 'BufRead'}, {
   pattern={'*.py'},
   command=[[
-  setlocal tabstop=4 shiftwidth=4 expandtab autoindent fileformat=unix foldmethod=indent foldnestmax=2
+  setlocal tabstop=4 shiftwidth=4 expandtab autoindent fileformat=unix colorcolumn=100
   nnoremap <silent> <leader>dn :lua require('dap-python').test_method()<CR>
   nnoremap <silent> <leader>df :lua require('dap-python').test_class()<CR>
   ]]
