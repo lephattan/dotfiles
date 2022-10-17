@@ -165,6 +165,7 @@ return require('packer').startup(function(use)
       require('gitsigns').setup()
     end
   }
+  -- Masson
   use {
     'williamboman/mason.nvim',
     requires = {'williamboman/mason-lspconfig.nvim'},
@@ -172,6 +173,21 @@ return require('packer').startup(function(use)
       require("mason").setup()
       require("mason-lspconfig").setup({
         ensure_installed = { "sumneko_lua"},
+      })
+    end
+  }
+
+  -- Null-ls
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    require = { 'nvim-lua/plenary.nvim' },
+    config = function ()
+      require('null-ls').setup({
+        sources = {
+          -- require('null-ls').builtins.diagnostics.pylint,
+          require('null-ls').builtins.diagnostics.flake8,
+          require('null-ls').builtins.code_actions.gitsigns,
+        }
       })
     end
   }

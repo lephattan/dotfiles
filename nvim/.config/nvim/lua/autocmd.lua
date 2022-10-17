@@ -32,3 +32,8 @@ create_autocmd({'BufNewFile', 'BufRead'}, {
   pattern={'*.conf.template'},
   command=[[set filetype=conf]],
 })
+
+create_autocmd({'FileType'}, {
+  pattern={'liquid'},
+  command=[[setlocal sts=0 expandtab|set filetype=liquid.html]],
+})
