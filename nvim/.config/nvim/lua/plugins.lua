@@ -114,13 +114,28 @@ return require('packer').startup(function(use)
   -- Telescope
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { {'nvim-lua/plenary.nvim'} },
+    config = function()
+      local actions = require("telescope.actions")
+      require('telescope').setup({
+        defaults = {
+          layout_strategy = 'vertical',
+          layout_config = { height = 0.95 },
+          mappings = {
+            i = {
+              ["<C-u>"] = false,
+              ["<esc>"] = actions.close,
+            },
+          }
+        },
+      })
+    end
   }
 
   -- Treesitter
-  use { 
-    'nvim-treesitter/nvim-treesitter', 
-    run = ':TSUpdate', 
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
     requires = {
       { 'JoosepAlviste/nvim-ts-context-commentstring' },
       {'nvim-treesitter/nvim-treesitter-context'},
@@ -145,12 +160,12 @@ return require('packer').startup(function(use)
   }
 
   -- Signature
-  use {
+  --[[ use {
     "ray-x/lsp_signature.nvim",
     config = function()
       require "lsp_signature".setup()
     end,
-  }
+  } ]]
 
   -- Markdown preview
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
@@ -182,11 +197,14 @@ return require('packer').startup(function(use)
     'jose-elias-alvarez/null-ls.nvim',
     require = { 'nvim-lua/plenary.nvim' },
     config = function ()
-      require('null-ls').setup({
+      local null_ls = require('null-ls')
+      null_ls.setup({
         sources = {
-          -- require('null-ls').builtins.diagnostics.pylint,
-          require('null-ls').builtins.diagnostics.flake8,
-          require('null-ls').builtins.code_actions.gitsigns,
+          null_ls.builtins.diagnostics.flake8,
+          null_ls.builtins.code_actions.gitsigns,
+          null_ls.builtins.diagnostics.eslint_d,
+          null_ls.builtins.formatting.prettierd,
+          null_ls.builtins.code_actions.eslint_d,
         }
       })
     end

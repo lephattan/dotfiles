@@ -162,7 +162,7 @@ _G.packer_plugins = {
     url = "https://github.com/anuvyklack/middleclass"
   },
   ["null-ls.nvim"] = {
-    config = { "\27LJ\2\2¶\1\0\0\5\0\n\0\0236\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\b\0004\2\3\0006\3\0\0'\4\1\0B\3\2\0029\3\3\0039\3\4\0039\3\5\3>\3\1\0026\3\0\0'\4\1\0B\3\2\0029\3\3\0039\3\6\0039\3\a\3>\3\2\2=\2\t\1B\0\2\1K\0\1\0\fsources\1\0\0\rgitsigns\17code_actions\vflake8\16diagnostics\rbuiltins\nsetup\fnull-ls\frequire\0" },
+    config = { "\27LJ\2\2ì\1\0\0\5\0\r\0\0296\0\0\0'\1\1\0B\0\2\0029\1\2\0005\2\v\0004\3\6\0009\4\3\0009\4\4\0049\4\5\4>\4\1\0039\4\3\0009\4\6\0049\4\a\4>\4\2\0039\4\3\0009\4\4\0049\4\b\4>\4\3\0039\4\3\0009\4\t\0049\4\n\4>\4\4\0039\4\3\0009\4\6\0049\4\b\4>\4\5\3=\3\f\2B\1\2\1K\0\1\0\fsources\1\0\0\14prettierd\15formatting\reslint_d\rgitsigns\17code_actions\vflake8\16diagnostics\rbuiltins\nsetup\fnull-ls\frequire\0" },
     loaded = true,
     path = "/home/tanle/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
     url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
@@ -240,6 +240,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["telescope.nvim"] = {
+    config = { "\27LJ\2\2ð\1\0\0\a\0\15\0\0206\0\0\0'\1\1\0B\0\2\0026\1\0\0'\2\2\0B\1\2\0029\1\3\0015\2\r\0005\3\4\0005\4\5\0=\4\6\0035\4\n\0005\5\a\0009\6\b\0=\6\t\5=\5\v\4=\4\f\3=\3\14\2B\1\2\1K\0\1\0\rdefaults\1\0\0\rmappings\6i\1\0\0\n<esc>\nclose\1\0\1\n<C-u>\1\18layout_config\1\0\1\vheight\4æÌ™³\6æÌ¹ÿ\3\1\0\1\20layout_strategy\rvertical\nsetup\14telescope\22telescope.actions\frequire\0" },
     loaded = true,
     path = "/home/tanle/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
@@ -299,6 +300,10 @@ time([[Setup for markdown-preview.nvim]], false)
 time([[Config for lsp_signature.nvim]], true)
 try_loadstring("\27LJ\2\2;\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18lsp_signature\frequire\0", "config", "lsp_signature.nvim")
 time([[Config for lsp_signature.nvim]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+try_loadstring("\27LJ\2\2ð\1\0\0\a\0\15\0\0206\0\0\0'\1\1\0B\0\2\0026\1\0\0'\2\2\0B\1\2\0029\1\3\0015\2\r\0005\3\4\0005\4\5\0=\4\6\0035\4\n\0005\5\a\0009\6\b\0=\6\t\5=\5\v\4=\4\f\3=\3\14\2B\1\2\1K\0\1\0\rdefaults\1\0\0\rmappings\6i\1\0\0\n<esc>\nclose\1\0\1\n<C-u>\1\18layout_config\1\0\1\vheight\4æÌ™³\6æÌ¹ÿ\3\1\0\1\20layout_strategy\rvertical\nsetup\14telescope\22telescope.actions\frequire\0", "config", "telescope.nvim")
+time([[Config for telescope.nvim]], false)
 -- Config for: which-key.nvim
 time([[Config for which-key.nvim]], true)
 try_loadstring("\27LJ\2\2;\0\0\2\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0004\1\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
@@ -309,7 +314,7 @@ try_loadstring("\27LJ\2\2…\1\0\0\3\0\6\0\t6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\
 time([[Config for nvim-ts-context-commentstring]], false)
 -- Config for: null-ls.nvim
 time([[Config for null-ls.nvim]], true)
-try_loadstring("\27LJ\2\2¶\1\0\0\5\0\n\0\0236\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\b\0004\2\3\0006\3\0\0'\4\1\0B\3\2\0029\3\3\0039\3\4\0039\3\5\3>\3\1\0026\3\0\0'\4\1\0B\3\2\0029\3\3\0039\3\6\0039\3\a\3>\3\2\2=\2\t\1B\0\2\1K\0\1\0\fsources\1\0\0\rgitsigns\17code_actions\vflake8\16diagnostics\rbuiltins\nsetup\fnull-ls\frequire\0", "config", "null-ls.nvim")
+try_loadstring("\27LJ\2\2ì\1\0\0\5\0\r\0\0296\0\0\0'\1\1\0B\0\2\0029\1\2\0005\2\v\0004\3\6\0009\4\3\0009\4\4\0049\4\5\4>\4\1\0039\4\3\0009\4\6\0049\4\a\4>\4\2\0039\4\3\0009\4\4\0049\4\b\4>\4\3\0039\4\3\0009\4\t\0049\4\n\4>\4\4\0039\4\3\0009\4\6\0049\4\b\4>\4\5\3=\3\f\2B\1\2\1K\0\1\0\fsources\1\0\0\14prettierd\15formatting\reslint_d\rgitsigns\17code_actions\vflake8\16diagnostics\rbuiltins\nsetup\fnull-ls\frequire\0", "config", "null-ls.nvim")
 time([[Config for null-ls.nvim]], false)
 -- Config for: windows.nvim
 time([[Config for windows.nvim]], true)

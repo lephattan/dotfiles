@@ -6,7 +6,10 @@ function M.setup()
     pyright = {},
     intelephense = {},
     cssls = {},
-    vuels = {},
+    -- vuels = {},
+    volar = {
+      filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
+    },
     tsserver = {},
     tailwindcss = {},
     html = {},
@@ -27,21 +30,24 @@ function M.setup()
   local nvim_lsp = require('lspconfig')
   local options = {
     on_attach = on_attach,
-    flags = { 
+    flags = {
       debounce_text_changes = 150,
     },
     capabilities = capabilities,
   }
 
-  for server, _ in pairs(servers) do
-    nvim_lsp[server].setup(options)
+  for server, option in pairs(servers) do
+    local lsp_options = options
+    for i = 1, #option do
+      table.insert(lsp_options, option[i])
+    end
+    nvim_lsp[server].setup(lsp_options)
   end
 
   --require('nlua.lsp.nvim').setup(require('lspconfig'), {
   --  on_attach = on_attach,
   --})
 
-  
 end
 
 return M

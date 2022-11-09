@@ -5,6 +5,14 @@ local dappython = require('dap-python')
 dapui.setup()
 require("nvim-dap-virtual-text").setup()
 dappython.setup('~/.virtualenvs/debugpy/bin/python')
+dappython.test_runner = 'pytest'
+
+table.insert(require('dap').configurations.python, {
+  type = 'python',
+  request = 'launch',
+  name = 'Run main.py',
+  program = 'main.py',
+})
 
 table.insert(require('dap').configurations.python, {
   type = 'python',
