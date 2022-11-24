@@ -28,11 +28,11 @@ cmp.setup({
     }),
 	},
   sources = {
+    {name = 'ultisnips'},
+    {name = 'buffer', keyword_length = 5},
     {name = 'nvim_lsp'},
     {name = 'path'},
-    {name = 'ultisnips'},
     -- {name = 'treesitter'},
-    {name = 'buffer', keyword_length = 5},
     -- {name = 'nvim_lua'},
   },
   window = {
