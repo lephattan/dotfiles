@@ -20,7 +20,8 @@ function M.setup(client, bufnr)
         i = {"<cmd>LspInfo<CR>", "LSP Info"},
         r = {'<cmd>LspRestart<CR>', 'LSP Restart'},
         a = {'<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code actiona'},
-        f = {'<cmd>lua vim.lsp.buf.formatting()<CR>', "Format Document" },
+        -- f = {'<cmd>lua vim.lsp.buf.formatting()<CR>', "Format Document" },
+        f = {'<cmd>lua vim.lsp.buf.format { async = true }<cr>', 'Format Document'}
       }
     }
 

@@ -1,7 +1,8 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+    install_path })
 end
 
 return require('packer').startup(function(use)
@@ -36,7 +37,7 @@ return require('packer').startup(function(use)
   use {
     'folke/which-key.nvim',
     config = function()
-      require("which-key").setup { }
+      require("which-key").setup {}
     end
   }
 
@@ -64,7 +65,7 @@ return require('packer').startup(function(use)
   use {
     'JoosepAlviste/nvim-ts-context-commentstring',
     config = function()
-      require'nvim-treesitter.configs'.setup {
+      require 'nvim-treesitter.configs'.setup {
         context_commentstring = {
           enable = true,
           enable_autocmd = false,
@@ -90,16 +91,16 @@ return require('packer').startup(function(use)
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
-      require("trouble").setup { }
+      require("trouble").setup {}
     end
   }
 
   -- Debug Adapter
-  use {'mfussenegger/nvim-dap',
-  requires = {
-    'mfussenegger/nvim-dap-python',
-    'rcarriga/nvim-dap-ui',
-    'theHamsta/nvim-dap-virtual-text',
+  use { 'mfussenegger/nvim-dap',
+    requires = {
+      'mfussenegger/nvim-dap-python',
+      'rcarriga/nvim-dap-ui',
+      'theHamsta/nvim-dap-virtual-text',
     }
   }
 
@@ -108,13 +109,13 @@ return require('packer').startup(function(use)
     'SirVer/ultisnips',
     requires = 'quangnguyen30192/cmp-nvim-ultisnips'
   }
-  -- Surround 
+  -- Surround
   use 'tpope/vim-surround'
 
   -- Telescope
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    requires = { {'nvim-lua/plenary.nvim'} },
+    requires = { { 'nvim-lua/plenary.nvim' } },
     config = function()
       local actions = require("telescope.actions")
       require('telescope').setup({
@@ -138,7 +139,7 @@ return require('packer').startup(function(use)
     run = ':TSUpdate',
     requires = {
       { 'JoosepAlviste/nvim-ts-context-commentstring' },
-      {'nvim-treesitter/nvim-treesitter-context'},
+      { 'nvim-treesitter/nvim-treesitter-context' },
     }
   }
 
@@ -168,7 +169,8 @@ return require('packer').startup(function(use)
   } ]]
 
   -- Markdown preview
-  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
+    setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
   -- Indent blankline
   use "lukas-reineke/indent-blankline.nvim"
@@ -183,11 +185,11 @@ return require('packer').startup(function(use)
   -- Masson
   use {
     'williamboman/mason.nvim',
-    requires = {'williamboman/mason-lspconfig.nvim'},
+    requires = { 'williamboman/mason-lspconfig.nvim' },
     config = function()
       require("mason").setup()
       require("mason-lspconfig").setup({
-        ensure_installed = { "sumneko_lua"},
+        ensure_installed = { "sumneko_lua" },
       })
     end
   }
@@ -196,7 +198,7 @@ return require('packer').startup(function(use)
   use {
     'jose-elias-alvarez/null-ls.nvim',
     require = { 'nvim-lua/plenary.nvim' },
-    config = function ()
+    config = function()
       local null_ls = require('null-ls')
       null_ls.setup({
         sources = {
@@ -205,7 +207,19 @@ return require('packer').startup(function(use)
           null_ls.builtins.diagnostics.eslint_d,
           null_ls.builtins.formatting.prettierd,
           null_ls.builtins.code_actions.eslint_d,
-        }
+        },
+        on_attach = function(client)
+          if client.server_capabilities.documentFormattingProvider then
+            vim.cmd(
+              [[
+            augroup LspFormatting
+            autocmd! * <buffer>
+            autocmd BufWritePre <buffer> lua vim.lsp.buf.format({async=true})
+            augroup END
+            ]]
+            )
+          end
+        end,
       })
     end
   }

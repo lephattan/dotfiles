@@ -8,7 +8,7 @@ function M.setup()
     cssls = {},
     -- vuels = {},
     volar = {
-      filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
+      filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
     },
     tsserver = {},
     tailwindcss = {},
