@@ -6,7 +6,7 @@ require('plugins')
 require('autocmd')
 require('treesitter')
 
--- Nvim-lsp 
+-- Nvim-lsp
 require('nvim-cmp')
 local lsp = require('lsp')
 lsp.setup()
@@ -19,3 +19,4 @@ vim.cmd('highlight Normal ctermbg=none guibg=none')
 vim.cmd('highlight NonText ctermbg=none guibg=none')
 
 require('nvim-hl')
+require('diagnostic')
