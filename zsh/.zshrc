@@ -72,6 +72,8 @@ plugins=(git zsh-autosuggestions zsh-interactive-cd)
 
 source $ZSH/oh-my-zsh.sh
 
+# Loading homebrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -103,6 +105,8 @@ alias de="deactivate"
 alias android-studio='bash /usr/local/android-studio/bin/studio.sh'
 alias settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 alias ..="cd .."
+alias vi="nvim"
+alias mosh="export LC_ALL=\"en_US.UTF8\" && mosh"
 
 ## Android Studio
 export PATH=$PATH:~/Android/Sdk/emulator
