@@ -189,7 +189,7 @@ return require('packer').startup(function(use)
     config = function()
       require("mason").setup()
       require("mason-lspconfig").setup({
-        ensure_installed = { "sumneko_lua" },
+        ensure_installed = { "sumneko_lua", "black", "prettierd", "eslint_d" },
       })
     end
   }
@@ -206,6 +206,7 @@ return require('packer').startup(function(use)
           null_ls.builtins.code_actions.gitsigns,
           null_ls.builtins.diagnostics.eslint_d,
           null_ls.builtins.formatting.prettierd,
+          null_ls.builtins.formatting.black,
           null_ls.builtins.code_actions.eslint_d,
         },
         on_attach = function(client)
@@ -214,7 +215,7 @@ return require('packer').startup(function(use)
               [[
             augroup LspFormatting
             autocmd! * <buffer>
-            autocmd BufWritePre <buffer> lua vim.lsp.buf.format({async=true})
+            autocmd BufWritePre <buffer> lua vim.lsp.buf.format({async=false})
             augroup END
             ]]
             )
