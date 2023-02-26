@@ -71,6 +71,7 @@ ZSH_THEME="agnoster"
 ## Plugins config
 ## TMUX
 export ZSH_TMUX_AUTOSTART=true
+export ZSH_TMUX_AUTOQUIT=false
 
 plugins=(git zsh-autosuggestions zsh-interactive-cd tmux)
 
@@ -137,3 +138,10 @@ fi
 
 # Fig post block. Keep at the bottom of this file.
 export GTK_IM_MODULE=ibus
+
+# bun completions
+[ -s "/home/tanle/.bun/_bun" ] && source "/home/tanle/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
