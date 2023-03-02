@@ -37,3 +37,10 @@ create_autocmd({ 'FileType' }, {
   pattern = { 'liquid' },
   command = [[setlocal sts=0 expandtab|set filetype=liquid.html]],
 })
+
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
