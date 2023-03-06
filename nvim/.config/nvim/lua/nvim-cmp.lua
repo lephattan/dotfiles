@@ -8,7 +8,7 @@ cmp.setup({
     end
   },
   mapping = {
-    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs( -4), { 'i', 'c' }),
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     -- ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
@@ -29,8 +29,8 @@ cmp.setup({
   },
   sources = {
     { name = 'ultisnips' },
-    { name = 'buffer', keyword_length = 3 },
-    { name = 'nvim_lsp' },
+    { name = 'buffer',   keyword_length = 3, max_item_count = 2 },
+    { name = 'nvim_lsp', },
     { name = 'path' },
     -- {name = 'treesitter'},
     -- {name = 'nvim_lua'},
@@ -63,7 +63,6 @@ cmp.setup.cmdline(':', {
 })
 
 local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-local cmp = require('cmp')
 cmp.event:on(
   'confirm_done',
   cmp_autopairs.on_confirm_done()

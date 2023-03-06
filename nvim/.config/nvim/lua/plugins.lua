@@ -17,7 +17,8 @@ return require('packer').startup(function(use)
   }
   use 'ryanoasis/vim-devicons'
 
-  use 'morhetz/gruvbox'
+  -- use 'morhetz/gruvbox'
+  use { "arturgoms/moonbow.nvim" }
   -- LSP
   use 'neovim/nvim-lspconfig'
   --CMP
@@ -156,7 +157,7 @@ return require('packer').startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     config = function()
       require('lualine').setup({
-        theme = 'gruvbox',
+        theme = 'moonbow',
       })
     end
   }
@@ -170,8 +171,12 @@ return require('packer').startup(function(use)
   } ]]
 
   -- Markdown preview
-  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
-    setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+    ft = { "markdown" },
+  })
 
   -- Indent blankline
   use "lukas-reineke/indent-blankline.nvim"

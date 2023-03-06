@@ -48,7 +48,6 @@ function M.setup()
   --require('nlua.lsp.nvim').setup(require('lspconfig'), {
   --  on_attach = on_attach,
   --})
-
 end
 
 return M

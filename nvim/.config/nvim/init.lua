@@ -14,9 +14,9 @@ lsp.setup()
 require('nvim-dap')
 
 -- Activate colorscheme
-vim.cmd('colorscheme gruvbox')
+vim.cmd('colorscheme moonbow')
 vim.cmd('highlight Normal ctermbg=none guibg=none')
 vim.cmd('highlight NonText ctermbg=none guibg=none')
 
-require('nvim-hl')
+-- require('nvim-hl')
 require('diagnostic')
