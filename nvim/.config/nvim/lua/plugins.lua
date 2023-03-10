@@ -170,7 +170,6 @@ return require('packer').startup(function(use)
       require "lsp_signature".setup()
     end,
   } ]]
-
   -- Markdown preview
   use({
     "iamcco/markdown-preview.nvim",
@@ -196,7 +195,7 @@ return require('packer').startup(function(use)
     config = function()
       require("mason").setup()
       require("mason-lspconfig").setup({
-        ensure_installed = { "sumneko_lua", "pyright" },
+        ensure_installed = { "sumneko_lua", "pyright", "bashls" },
       })
     end
   }
