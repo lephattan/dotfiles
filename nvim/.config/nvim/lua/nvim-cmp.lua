@@ -29,9 +29,10 @@ cmp.setup({
   },
   sources = {
     { name = 'ultisnips' },
-    { name = 'buffer',   keyword_length = 3, max_item_count = 2 },
+    { name = 'buffer',                 keyword_length = 3, max_item_count = 2 },
     { name = 'nvim_lsp', },
     { name = 'path' },
+    { name = 'nvim_lsp_signature_help' },
     -- {name = 'treesitter'},
     -- {name = 'nvim_lua'},
   },
