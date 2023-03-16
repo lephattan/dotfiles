@@ -105,13 +105,14 @@ export EDITOR=nvim
 # Example aliases
 alias zshconfig="vi ~/.zshrc"
 alias ohmyzsh="vi ~/.oh-my-zsh"
-alias ac="source env/bin/activate"
+# alias ac="source env/bin/activate"
 alias de="deactivate"
 alias android-studio='bash /usr/local/android-studio/bin/studio.sh'
 alias settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 alias ..="cd .."
 alias vi="nvim"
 alias mosh="export LC_ALL=\"en_US.UTF8\" && mosh"
+alias flake8="flake8 --config ~/.config/flake8"
 
 ## Android Studio
 export PATH=$PATH:~/Android/Sdk/emulator
@@ -127,9 +128,13 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 export VIRTUAL_ENV_DISABLE_PROMPT=yes
 prompt_virtualenv() {
   if [[ -n $VIRTUAL_ENV ]]; then
+    envPrompt=$(basename $(dirname $VIRTUAL_ENV));
+    if [ "${envPrompt}" = '.envs' ]; then
+      envPrompt=$(basename $VIRTUAL_ENV);
+    fi
     color=cyan
     prompt_segment $color white
-    print -Pn "\UE73C $(basename $(dirname $VIRTUAL_ENV))"
+    print -Pn "\UE73C ${envPrompt}"
   fi
 }
 if test -f ~/.scripts/scripts.sh; then
