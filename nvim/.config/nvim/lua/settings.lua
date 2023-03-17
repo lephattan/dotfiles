@@ -18,11 +18,11 @@ vim.opt.splitbelow = true
 vim.opt.cursorline = true
 vim.o.completeopt = "menuone,noinsert,noselect"
 g.startify_lists = {
-  { type = 'sessions', header = { 'Sessions' } },
-  { type = 'files', header = { 'MRU' } },
-  { type = 'dir', header = { 'MRU' .. vim.fn.getcwd() } },
+  { type = 'sessions',  header = { 'Sessions' } },
+  { type = 'files',     header = { 'MRU' } },
+  { type = 'dir',       header = { 'MRU' .. vim.fn.getcwd() } },
   { type = 'bookmarks', header = { 'Bookmarks' } },
-  { type = 'commands', header = { 'Commands' } },
+  { type = 'commands',  header = { 'Commands' } },
 }
 vim.o.expandtab = true
 vim.o.tabstop = 2
@@ -31,6 +31,8 @@ vim.o.softtabstop = 2
 vim.o.smartindent = true
 vim.o.mouse = nil
 vim.o.ph = 10
+vim.api.nvim_set_hl(0, "ColorColumn", { bg = '#754C00' })
+vim.api.nvim_set_hl(0, "ExtraWhitespace", { bg = 'red' })
 
 -- Snippet
 g.UltiSnipsSnippetDirectories = { "UltiSnips", '$HOME/.config/nvim/UltiSnips' }
