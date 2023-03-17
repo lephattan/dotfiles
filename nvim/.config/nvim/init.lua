@@ -1,7 +1,7 @@
 -- Call Lua Modules
 require('helpers')
-require('mappings')
 require('plugins')
+require('mappings')
 require('autocmd')
 require('treesitter')
 
