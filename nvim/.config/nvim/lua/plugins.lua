@@ -231,6 +231,20 @@ return require('packer').startup(function(use)
     end
   }
 
+  -- tagbar
+  use {
+    'preservim/tagbar',
+    config = function()
+      local whichkey = require('which-key')
+      whichkey.register({
+        t = {
+          name = "TagBar",
+          t = { '<cmd>TagbarToggle<cr>', 'Toggle TagBar' }
+        }
+      }, { prefix = '<leader>' })
+    end
+  }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
 
