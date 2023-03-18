@@ -14,7 +14,7 @@ function M.setup()
     tailwindcss = {},
     html = {},
     vimls = {},
-    sumneko_lua = {},
+    lua_ls = {},
     jsonls = {},
     ccls = {},
     dockerls = {},
