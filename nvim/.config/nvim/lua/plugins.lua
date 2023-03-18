@@ -196,7 +196,7 @@ require('packer').startup(function(use)
     config = function()
       require("mason").setup()
       require("mason-lspconfig").setup({
-        ensure_installed = { "sumneko_lua", "pyright", "bashls" },
+        ensure_installed = { "lua_ls", "pyright", "bashls", 'jsonls' },
       })
     end
   }
@@ -272,5 +272,5 @@ local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost', {
   command = 'source <afile> | PackerCompile',
   group = packer_group,
-  pattern = vim.fn.expand '$MYVIMRC',
+  pattern = { vim.fn.expand '$MYVIMRC', 'plugins.lua' },
 })
