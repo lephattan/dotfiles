@@ -119,7 +119,7 @@ require('packer').startup(function(use)
   -- Telescope
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
-    requires = { { 'nvim-lua/plenary.nvim' } },
+    requires = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-dap.nvim' },
     config = function()
       local actions = require("telescope.actions")
       require('telescope').setup({
@@ -134,6 +134,7 @@ require('packer').startup(function(use)
           }
         },
       })
+      require('telescope').load_extension('dap')
     end
   }
 
