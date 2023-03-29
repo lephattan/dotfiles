@@ -19,6 +19,9 @@ function M.setup()
     ccls = {},
     dockerls = {},
     bashls = {},
+    --[[ rust_analyzer = {
+      cmd = { 'rustup', "run", "stable", "rust-analyzer" }
+    } ]]
   }
 
   local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -43,12 +46,11 @@ function M.setup()
     for i = 1, #option do
       table.insert(lsp_options, option[i])
     end
+    --[[ for key, value in pairs(option) do
+      lsp_options[key] = value
+    end ]]
     nvim_lsp[server].setup(lsp_options)
   end
-
-  --require('nlua.lsp.nvim').setup(require('lspconfig'), {
-  --  on_attach = on_attach,
-  --})
 end
 
 return M
