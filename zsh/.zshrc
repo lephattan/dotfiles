@@ -113,6 +113,7 @@ alias ..="cd .."
 alias vi="nvim"
 alias mosh="export LC_ALL=\"en_US.UTF8\" && mosh"
 alias flake8="flake8 --config ~/.config/flake8"
+alias :q="exit"
 
 ## Android Studio
 export PATH=$PATH:~/Android/Sdk/emulator
