@@ -24,6 +24,7 @@ require('lazy').setup({
       auto_install = true,
       highlight = {
         enable = true,
+        additional_vim_regex_highlighting = false
       },
       context_commentstring = {
         enable = true,
@@ -43,19 +44,33 @@ require('lazy').setup({
       },
     }
   },
-
   {
     -- Theme
     "catppuccin/nvim",
     name = "catppuccin",
-    -- lazy = true,
     priority = 1000,
     config = function()
       require('catppuccin').setup({
         transparent_background = true,
-        flavour = "macchiato",
+        term_colors = true,
+        flavour = "mocha",
+        integrations = {
+          cmp = true,
+          gitsigns = true,
+          nvimtree = true,
+          telescope = true,
+          fidget = true,
+          indent_blankline = {
+            enabled = true,
+            colored_indent_levels = false,
+          },
+          markdown = true,
+          dap = {
+            enabled = true,
+            enable_ui = true, -- enable nvim-dap-ui
+          }
+        },
       })
-      vim.cmd.colorscheme "catppuccin-macchiato"
     end
   },
   {
@@ -68,7 +83,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim',       opts = {} },
+      { 'j-hui/fidget.nvim',       opts = { window = { blend = 0 } } },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -188,7 +203,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        -- theme = 'onedark',
+        theme = 'catppuccin',
         component_separators = '|',
         section_separators = '',
         disabled_filetypes = {

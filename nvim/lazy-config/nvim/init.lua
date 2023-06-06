@@ -22,3 +22,5 @@ vim.opt.rtp:prepend(lazypath)
 require("plugins")
 require("settings")
 require("lsp")
+
+vim.cmd.colorscheme "catppuccin"
