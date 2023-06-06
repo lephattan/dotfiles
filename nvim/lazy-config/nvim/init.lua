@@ -21,3 +21,4 @@ vim.opt.rtp:prepend(lazypath)
 -- Actually load plugin
 require("plugins")
 require("settings")
+require("lsp")

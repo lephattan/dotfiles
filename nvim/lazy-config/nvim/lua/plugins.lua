@@ -57,7 +57,7 @@ require('lazy').setup({
     dependencies = {
       'SirVer/ultisnips',
       'quangnguyen30192/cmp-nvim-ultisnips',
-      "windwp/nvim-autopairs",
+      { "windwp/nvim-autopairs", opts = {} },
 
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
@@ -82,7 +82,6 @@ require('lazy').setup({
           ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
           ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
           ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-          -- ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
           ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
           ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
           ['<C-y>'] = cmp.mapping(cmp.mapping.confirm {
@@ -100,11 +99,11 @@ require('lazy').setup({
         },
         sources = cmp.config.sources({
           { name = 'ultisnips' },
-          { name = 'buffer',                 keyword_length = 3, max_item_count = 2 },
           { name = 'nvim_lsp', },
+          { name = 'buffer',                 keyword_length = 3, max_item_count = 2 },
           { name = 'path' },
           { name = 'nvim_lsp_signature_help' },
-          -- {name = 'treesitter'},
+          { name = 'treesitter' },
           -- {name = 'nvim_lua'},
         }),
         window = {
@@ -136,6 +135,7 @@ require('lazy').setup({
         },
         mapping = cmp.mapping.preset.cmdline(),
       })
+      -- Autopairs hook
       local cmp_autopairs = require "nvim-autopairs.completion.cmp"
       cmp.event:on(
         'confirm_done',
