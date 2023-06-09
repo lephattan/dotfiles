@@ -20,29 +20,33 @@ require('lazy').setup({
       { 'nvim-treesitter/nvim-treesitter-context' },
     },
     build = ':TSUpdate',
-    opts = {
-      auto_install = true,
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false
-      },
-      context_commentstring = {
-        enable = true,
-      },
-      indent = {
-        enable = true,
-        disable = { 'python' }
-      },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = '<c-space>',
-          node_incremental = '<c-space>',
-          scope_incremental = '<c-s>',
-          node_decremental = '<M-space>',
+    config = function()
+      local opts = {
+        ensure_installed = 'all',
+        auto_install = true,
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false
         },
-      },
-    }
+        context_commentstring = {
+          enable = true,
+        },
+        indent = {
+          enable = true,
+          disable = { 'python' }
+        },
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = '<c-space>',
+            node_incremental = '<c-space>',
+            scope_incremental = '<c-s>',
+            node_decremental = '<M-space>',
+          },
+        },
+      }
+      require("nvim-treesitter.configs").setup(opts)
+    end
   },
   {
     -- Theme
