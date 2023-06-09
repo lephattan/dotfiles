@@ -82,7 +82,13 @@ require('lazy').setup({
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      { 'williamboman/mason.nvim', config = true },
+      {
+        'williamboman/mason.nvim',
+        config = true,
+        opts = {
+          ui = { border = "rounded" }
+        }
+      },
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
@@ -443,4 +449,8 @@ require('lazy').setup({
 
   require 'lsp-debug',
   require 'autoformat',
-}, {})
+}, {
+  ui = {
+    border = "rounded"
+  }
+})

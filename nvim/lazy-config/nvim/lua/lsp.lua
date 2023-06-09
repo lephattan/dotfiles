@@ -28,6 +28,9 @@ local on_attach = function(_, buffer)
   vim.api.nvim_buf_create_user_command(buffer, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
+
+  -- Popup windows border
+  require('lspconfig.ui.windows').default_options.border = 'rounded'
 end
 
 require('neodev').setup()
