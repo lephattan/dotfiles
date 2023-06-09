@@ -24,3 +24,4 @@ require("settings")
 require("lsp")
 
 vim.cmd.colorscheme "catppuccin"
+require("style") -- custom style

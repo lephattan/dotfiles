@@ -47,8 +47,6 @@ o.softtabstop = 2
 o.smartindent = true
 o.mouse = 'a'
 o.ph = 10
-api.nvim_set_hl(0, "ColorColumn", { bg = '#754C00' }) -- Color column BG
-api.nvim_set_hl(0, "ExtraWhitespace", { bg = 'red' }) -- Extra white space warning
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
