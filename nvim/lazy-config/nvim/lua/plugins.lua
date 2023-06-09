@@ -218,8 +218,22 @@ require('lazy').setup({
     'akinsho/bufferline.nvim',
     version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons',
-    opts = {}
-    -- TODO: config this
+    opts = {
+      options = {
+        indicator = {
+          style = "underline"
+        },
+        offsets = {
+          {
+            filetype = "NvimTree",
+            text = "File Explorer",
+            text_align = "left",
+            separator = true
+          }
+        },
+        numbers = "buffer_id"
+      },
+    }
   },
   {
     -- Add indentation guides even on blank lines
