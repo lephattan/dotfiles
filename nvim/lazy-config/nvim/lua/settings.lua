@@ -45,7 +45,7 @@ o.tabstop = 2
 o.shiftwidth = 2
 o.softtabstop = 2
 o.smartindent = true
-o.mouse = 'a'
+o.mouse = nil
 o.ph = 10
 
 -- [[ Highlight on yank ]]
