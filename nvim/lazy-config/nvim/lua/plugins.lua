@@ -18,6 +18,7 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter-textobjects',
       { 'nvim-treesitter/nvim-treesitter-context' },
     },
+    event = "VeryLazy",
     build = ':TSUpdate',
     config = function()
       local opts = {
