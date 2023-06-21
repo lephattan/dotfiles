@@ -63,6 +63,7 @@ local servers = {
   },
   tsserver = {},
   tailwindcss = {},
+  yamlls = {},
 }
 
 local ext_servers = {
