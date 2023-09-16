@@ -1,1 +1,7 @@
 packer_compiled.lua
+nvim/lazy-config/composer/
+nvim/lazy-config/configstore/
+nvim/lazy-config/doctl/
+nvim/lazy-config/helm/
+nvim/lazy-config/htop/
+nvim/lazy-config/pulse/
