@@ -62,7 +62,7 @@ local servers = {
     -- cmd = { 'rustup', "run", "stable", "rust-analyzer" }
   },
   tsserver = {},
-  tailwindcss = {},
+  -- tailwindcss = {},
   yamlls = {},
 }
 
