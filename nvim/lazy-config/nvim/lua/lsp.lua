@@ -83,3 +83,11 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
+
+for server, settings in pairs(ext_servers) do
+  require("lspconfig")[server].setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    settings = settings,
+  }
+end
