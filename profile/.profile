@@ -26,7 +26,8 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-export GTK_IM_MODULE=xim # đổi thành xim
+# export GTK_IM_MODULE=xim # đổi thành xim
+export GTK_IM_MODULE=ibus # fix dbeaver flickering screen
 export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 # Dành cho những phần mềm dựa trên qt4
