@@ -468,6 +468,9 @@ require('lazy').setup({
       keymap('n', "<C-k>", "<cmd>TmuxNavigateUp<cr>", { desc = "Jump to upper pane" })
     end
   },
+  {
+    "raimon49/requirements.txt.vim"
+  },
 
   require 'lsp-debug',
   require 'autoformat',
