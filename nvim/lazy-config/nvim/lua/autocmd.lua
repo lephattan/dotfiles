@@ -43,3 +43,7 @@ create_autocmd({ 'FileType' }, {
 --     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
 --   augroup end
 -- ]])
+create_autocmd({ 'FileType' }, {
+  pattern = { 'yaml' },
+  command = [[ setlocal tabstop=2 shiftwidth=2 expandtab ]],
+})
