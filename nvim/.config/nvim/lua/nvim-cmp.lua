@@ -27,7 +27,7 @@ cmp.setup({
       behavior = cmp.ConfirmBehavior.Replace,
     }),
   },
-  sources = {
+  sources = cmp.config.sources({
     { name = 'ultisnips' },
     { name = 'buffer',                 keyword_length = 3, max_item_count = 2 },
     { name = 'nvim_lsp', },
@@ -35,7 +35,7 @@ cmp.setup({
     { name = 'nvim_lsp_signature_help' },
     -- {name = 'treesitter'},
     -- {name = 'nvim_lua'},
-  },
+  }),
   window = {
     documentation = {
       border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },

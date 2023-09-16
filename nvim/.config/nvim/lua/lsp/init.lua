@@ -46,9 +46,6 @@ function M.setup()
     for i = 1, #option do
       table.insert(lsp_options, option[i])
     end
-    --[[ for key, value in pairs(option) do
-      lsp_options[key] = value
-    end ]]
     nvim_lsp[server].setup(lsp_options)
   end
 end

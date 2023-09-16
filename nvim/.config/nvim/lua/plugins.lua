@@ -269,6 +269,13 @@ require('packer').startup(function(use)
       })
     end
   }
+
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+
+  use {
+    'stevearc/oil.nvim',
+    config = function() require('oil').setup() end
+  }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
 
