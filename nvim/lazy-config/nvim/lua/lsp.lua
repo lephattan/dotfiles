@@ -51,7 +51,15 @@ local servers = {
   volar = {
     filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
   },
-  html = {},
+  html = {
+    settings = {
+      html = {
+        format = {
+          indentInnerHtml = true
+        }
+      }
+    }
+  },
   vimls = {},
   lua_ls = {},
   jsonls = {},
@@ -64,6 +72,21 @@ local servers = {
   tsserver = {},
   -- tailwindcss = {},
   yamlls = {},
+  gopls = {},
+  sqlls = {},
+  emmet_ls = {
+    filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug",
+      "typescriptreact", "vue" },
+    init_options = {
+      html = {
+        options = {
+          -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+          ["bem.enabled"] = true,
+        },
+      },
+    }
+
+  }
 }
 
 local ext_servers = {
