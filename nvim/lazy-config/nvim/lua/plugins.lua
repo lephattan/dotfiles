@@ -471,6 +471,14 @@ require('lazy').setup({
   {
     "raimon49/requirements.txt.vim"
   },
+  {
+    "iamcco/markdown-preview.nvim",
+    build = "cd app && npm install",
+    config = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = "markdown",
+  },
 
   require 'lsp-debug',
   require 'autoformat',
