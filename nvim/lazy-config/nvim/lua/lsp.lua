@@ -55,7 +55,8 @@ local servers = {
     settings = {
       html = {
         format = {
-          indentInnerHtml = true
+          indentInnerHtml = true,
+          wrapLineLength = 0,
         }
       }
     }
