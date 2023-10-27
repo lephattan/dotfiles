@@ -493,10 +493,10 @@ require('lazy').setup({
       vim.keymap.set("n", "<leader>a", mark.add_file)
       vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
 
-      vim.keymap.set("n", "<C-h>", function() ui.nav_file(1) end)
-      vim.keymap.set("n", "<C-t>", function() ui.nav_file(2) end)
-      vim.keymap.set("n", "<C-n>", function() ui.nav_file(3) end)
-      vim.keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
+      keymap('n', "gh1", function() ui.nav_file(1) end, { desc = "[g]o to [h]arpoon file id [1]" })
+      keymap('n', "gh2", function() ui.nav_file(2) end, { desc = "[g]o to [h]arpoon file id [2]" })
+      keymap('n', "gh3", function() ui.nav_file(3) end, { desc = "[g]o to [h]arpoon file id [3]" })
+      keymap('n', "gh4", function() ui.nav_file(4) end, { desc = "[g]o to [h]arpoon file id [4]" })
     end
   },
 
