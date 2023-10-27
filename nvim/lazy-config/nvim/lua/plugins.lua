@@ -499,6 +499,9 @@ require('lazy').setup({
       keymap('n', "gh4", function() ui.nav_file(4) end, { desc = "[g]o to [h]arpoon file id [4]" })
     end
   },
+  {
+    "fatih/vim-go",
+  },
 
   require 'lsp-debug',
   require 'autoformat',
