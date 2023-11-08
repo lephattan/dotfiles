@@ -434,14 +434,35 @@ require('lazy').setup({
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       local null_ls = require('null-ls')
+      local function style50()
+        local h = require("null-ls.helpers")
+        local methods = require("null-ls.methods")
+        local FORMATTING = methods.internal.FORMATTING
+
+        return h.make_builtin {
+          name = "style50_format",
+          meta = {},
+          method = FORMATTING,
+          filetypes = { "c" },
+          generator_opts = {
+            command = "clang-format",
+            args = {
+              "-style={ AllowShortFunctionsOnASingleLine: Empty, BraceWrapping: { AfterCaseLabel: true, AfterControlStatement: true, AfterFunction: true, AfterStruct: true, BeforeElse: true, BeforeWhile: true }, BreakBeforeBraces: Custom, ColumnLimit: 132, IndentCaseLabels: true, IndentWidth: 4, SpaceAfterCStyleCast: true, TabWidth: 4 }",
+              "$FILENAME",
+            },
+          },
+          factory = h.formatter_factory,
+        }
+      end
       null_ls.setup({
         sources = {
           null_ls.builtins.diagnostics.flake8,
+          -- null_ls.builtins.diagnostics.eslint_d,
           null_ls.builtins.code_actions.gitsigns,
-          null_ls.builtins.diagnostics.eslint_d,
+          null_ls.builtins.code_actions.eslint_d,
           null_ls.builtins.formatting.prettierd.with { disabled_filetypes = { 'html' } },
           null_ls.builtins.formatting.black,
-          null_ls.builtins.code_actions.eslint_d,
+          style50,
         },
       })
     end

@@ -8,7 +8,10 @@ vim.keymap.set('n', '<leader>li', '<cmd>LspInfo<CR>', { desc = '[L]SP [I]nfo' })
 vim.keymap.set('n', '<leader>lr', '<cmd>LspRestart<CR>', { desc = '[L]SP [R]estart' })
 
 -- Key maps
-local on_attach = function(_, buffer)
+local on_attach = function(client, buffer)
+  if client.name == "clangd" then
+    client.server_capabilities.documentFormattingProvider = false
+  end
   -- Diagnostic keymaps
   nmap('K', vim.lsp.buf.hover, "LSP: Hover document", buffer)
   nmap('<c-k>', vim.lsp.buf.signature_help, "LSP: Signature help", buffer)
@@ -86,8 +89,8 @@ local servers = {
         },
       },
     }
-
-  }
+  },
+  clangd = {},
 }
 
 local ext_servers = {
