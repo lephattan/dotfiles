@@ -154,3 +154,9 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+# cs50
+# configure clang
+export CC=clang
+export CFLAGS="-fsanitize=integer -fsanitize=undefined -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wshadow -Wno-unused-variable -Wno-unused-parameter"
+export LDLIBS="-lcrypt -lcs50 -lm"
