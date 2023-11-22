@@ -523,6 +523,21 @@ require('lazy').setup({
   {
     "fatih/vim-go",
   },
+  {
+    "RRethy/vim-illuminate",
+    config = function()
+      require('illuminate').configure({
+        filetypes_denylist = {
+          'dirvish',
+          'fugitive',
+          'NvimTree',
+          'harpoon',
+        },
+      })
+      vim.cmd("hi IlluminatedWordRead guibg=#525252 gui=none")
+      vim.cmd("hi IlluminatedWordText guibg=#525252 gui=none")
+    end
+  },
 
   require 'lsp-debug',
   require 'autoformat',
