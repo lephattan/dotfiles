@@ -216,7 +216,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'catppuccin',
+        theme = "gruvbox",
         component_separators = '|',
         section_separators = '',
         disabled_filetypes = {
@@ -537,6 +537,14 @@ require('lazy').setup({
       vim.cmd("hi IlluminatedWordRead guibg=#525252 gui=none")
       vim.cmd("hi IlluminatedWordText guibg=#525252 gui=none")
     end
+  },
+  {
+    "stevearc/dressing.nvim",
+    opts = {
+      input = {
+        relative = "editor",
+      }
+    },
   },
 
   require 'lsp-debug',
