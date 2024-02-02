@@ -574,6 +574,9 @@ require('lazy').setup({
     end
   },
   {
+    "mattn/emmet-vim",
+  },
+  {
     "stevearc/dressing.nvim",
     opts = {
       input = {
