@@ -47,3 +47,29 @@ create_autocmd({ 'FileType' }, {
   pattern = { 'yaml' },
   command = [[ setlocal tabstop=2 shiftwidth=2 expandtab ]],
 })
+
+-- create_autocmd({ 'FileType' }, {
+--   pattern = { 'typescript' },
+--   command = [[ set filetype=typescriptreact]],
+-- })
+
+create_autocmd({ 'FileType' }, {
+  pattern = { 'c' },
+  command = [[ set tabstop=4 shiftwidth=4]],
+})
+
+create_autocmd({ 'FileType' }, {
+  pattern = { 'dap-float', },
+  command = [[
+  setlocal wrap
+  nnoremap <buffer><silent> q :q<cr>
+  ]],
+})
+
+create_autocmd({ 'FileType' }, {
+  pattern = { 'git', 'fugitive' },
+  command = [[
+  nnoremap <buffer><silent> q :q<cr>
+  ]],
+})
+
