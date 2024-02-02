@@ -325,10 +325,15 @@ require('lazy').setup({
       keymap('n', '<leader>ft', '<cmd>TodoTelescope<cr>', { desc = '[F]ind [T]ODOS' })
       keymap('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
       keymap('n', '<leader>fs', function()
-        local status, search = pcall(vim.fn.input, "Grep > ");
-        if status then
-          require('telescope.builtin').grep_string({ search = search });
-        end
+        vim.ui.input({
+            prompt = "Grep > ",
+          },
+          function(input)
+            if input then
+              require('telescope.builtin').grep_string({ search = input });
+            end
+          end
+        )
       end, { desc = '[F]ind [S]tring' })
       keymap('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
       keymap('n', '<leader>/', function()
