@@ -31,9 +31,6 @@ require('lazy').setup({
           enable = true,
           additional_vim_regex_highlighting = false
         },
-        context_commentstring = {
-          enable = true,
-        },
         indent = {
           enable = true,
           disable = { 'python' }
@@ -265,22 +262,21 @@ require('lazy').setup({
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
     opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
-      space_char_blankline = " ",
-      show_current_context = true,
-      show_current_context_start = false,
+      debounce = 100,
+      indent = { char = "|" },
+      whitespace = { highlight = { "Whitespace", "NonText" } },
     },
+    main = "ibl"
   },
   {
     -- Comment string context
     'JoosepAlviste/nvim-ts-context-commentstring',
     config = function()
       require 'nvim-treesitter.configs'.setup {
-        context_commentstring = {
-          enable = true,
-          enable_autocmd = false,
-        }
+        enable_autocmd = false,
+        languages = {
+          typescript = '// %s',
+        },
       }
     end
   },
@@ -429,18 +425,19 @@ require('lazy').setup({
         view                = {
           width = 40,
           -- height = 30,
-          hide_root_folder = false,
           side = 'left',
           --auto_resize = false,
-          mappings = {
-            custom_only = false,
-            list = {}
-          }
+          -- view.mappings is deprecated
+          -- mappings = {
+          --   custom_only = false,
+          --   list = {}
+          -- }
         },
         renderer            = {
           indent_markers = {
             enable = true,
           },
+          root_folder_label = false,
         },
       }
     end
