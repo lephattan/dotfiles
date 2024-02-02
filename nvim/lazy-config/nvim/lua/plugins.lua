@@ -49,6 +49,17 @@ require('lazy').setup({
         },
       }
       require("nvim-treesitter.configs").setup(opts)
+
+      -- Go templ files syntax hightlight
+      local parser_config = require 'nvim-treesitter.parsers'.get_parser_configs()
+      parser_config.gotmpl = {
+        install_info = {
+          url = "https://github.com/ngalaiko/tree-sitter-go-template",
+          files = { "src/parser.c" }
+        },
+        filetype = "gotmpl",
+        used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", }
+      }
     end
   },
   {
@@ -522,6 +533,9 @@ require('lazy').setup({
   },
   {
     "fatih/vim-go",
+  },
+  {
+    "joerdav/templ.vim"
   },
   {
     "RRethy/vim-illuminate",

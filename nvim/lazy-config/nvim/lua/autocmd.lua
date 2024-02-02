@@ -73,3 +73,10 @@ create_autocmd({ 'FileType' }, {
   ]],
 })
 
+
+create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { '*.tmpl' },
+  command = [[
+  setlocal filetype=gotmpl
+  ]],
+})
