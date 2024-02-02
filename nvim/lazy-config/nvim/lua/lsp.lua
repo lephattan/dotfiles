@@ -69,14 +69,13 @@ local servers = {
   vimls = {},
   lua_ls = {},
   jsonls = {},
-  -- ccls = {}, -- NOTE: Not valid server name??
   dockerls = {},
   bashls = {},
   rust_analyzer = {
     -- cmd = { 'rustup', "run", "stable", "rust-analyzer" }
   },
   tsserver = {},
-  -- tailwindcss = {},
+  unocss = {},
   yamlls = {},
   gopls = {},
   sqlls = {},
