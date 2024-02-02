@@ -1,22 +1,28 @@
--- Call Lua Modules
-require('helpers')
-require('plugins')
+-- Set <space> as the leader key
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 require('mappings')
+
+-- Install package manager
+--    https://github.com/folke/lazy.nvim
+--    `:help lazy.nvim.txt` for more info
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
+    lazypath,
+  }
+end
+vim.opt.rtp:prepend(lazypath)
+-- Actually load plugin
+require("plugins")
+require("settings")
+require("lsp")
 require('autocmd')
-require('treesitter')
 
--- Nvim-lsp
-require('nvim-cmp')
-local lsp = require('lsp')
-lsp.setup()
-
-require('nvim-dap')
-
--- Activate colorscheme
-vim.cmd('colorscheme moonbow')
-require('settings')
-vim.cmd('highlight Normal ctermbg=none guibg=none')
-vim.cmd('highlight NonText ctermbg=none guibg=none')
-
--- require('nvim-hl')
-require('diagnostic')
+vim.cmd.colorscheme "catppuccin"
+require("style") -- custom style
