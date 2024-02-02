@@ -86,7 +86,18 @@ return {
       port = 9003,
       pathMappings = {
         ["/var/www/htdocs"] = "${workspaceFolder}"
-      }
+      },
+    })
+
+    table.insert(require('dap').configurations.php, {
+      type = 'php',
+      request = 'launch',
+      name = 'Listen for Xdebug (Local)',
+      port = 9003,
+      pathMappings = {
+        ["/app/public"] = "${workspaceRoot}",
+      },
+      localSourceRoot = "${workspaceFolder}",
     })
 
     dap.defaults.fallback.force_external_terminal = true
