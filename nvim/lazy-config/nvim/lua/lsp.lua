@@ -1,4 +1,5 @@
 local nmap = require("helpers").nmap
+local imap = require("helpers").imap
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
@@ -14,7 +15,8 @@ local on_attach = function(client, buffer)
   end
   -- Diagnostic keymaps
   nmap('K', vim.lsp.buf.hover, "LSP: Hover document", buffer)
-  nmap('<c-k>', vim.lsp.buf.signature_help, "LSP: Signature help", buffer)
+  nmap('<c-h>', vim.lsp.buf.signature_help, "LSP: Signature [h]elp", buffer)
+  imap('<c-h>', vim.lsp.buf.signature_help, "LSP: Signature [h]elp", buffer)
 
   nmap('<leader>rn', vim.lsp.buf.rename, 'LSP: [R]e[n]ame', buffer)
   nmap('<leader>ca', vim.lsp.buf.code_action, 'LSP: [C]ode [A]ction', buffer)

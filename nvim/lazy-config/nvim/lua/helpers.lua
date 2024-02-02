@@ -1,4 +1,5 @@
 local M = {}
+
 function M.nmap(keys, func, desc, buffer)
   local opts = {}
   if desc then
@@ -8,6 +9,17 @@ function M.nmap(keys, func, desc, buffer)
     opts.buffer = buffer
   end
   vim.keymap.set('n', keys, func, opts)
+end
+
+function M.imap(keys, func, desc, buffer)
+  local opts = {}
+  if desc then
+    opts.desc = '' .. desc
+  end
+  if buffer then
+    opts.buffer = buffer
+  end
+  vim.keymap.set('i', keys, func, opts)
 end
 
 return M
