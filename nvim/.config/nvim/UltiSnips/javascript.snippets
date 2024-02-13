@@ -15,3 +15,124 @@ if (${1}){
 	${3://Code here}
 }
 endsnippet
+
+##########
+# COMMON #
+##########
+
+# The smart def and smart class snippets use a global option called
+# "g:ultisnips_python_style" which, if set to "doxygen" will use doxygen
+# style comments in docstrings.
+
+global !p
+
+# Doc styles:
+NORMAL  = 0x1
+
+class JsArg(object):
+	def __init__(self, arg):
+		self.arg = arg
+		name_and_type = arg.split('=')[0].split(':')
+		self.name = name_and_type[0].strip()
+		self.type = name_and_type[1].strip() if len(name_and_type) == 2 else None
+
+	def __str__(self):
+		return self.name
+
+	def __unicode__(self):
+		return self.name
+
+
+def get_args(arglist):
+	args = []
+	n = len(arglist)
+	i = 0
+	while i < n:
+		l_bracket = 0
+		start = i
+		while i < n and (l_bracket > 0 or arglist[i] != ','):
+			if arglist[i] == '[':
+				l_bracket += 1
+			elif arglist[i] == ']' and l_bracket > 0:
+				l_bracket -= 1
+			i += 1
+		arg = arglist[start:i]
+		if arg:
+			args.append(JsArg(arg))
+		i += 1
+
+	# args = [arg for arg in args if arg.name != 'self']
+
+	return args
+
+
+def get_style(snip):
+	style = snip.opt("g:ultisnips_js_style", "normal")
+	return NORMAL
+
+
+def format_arg(arg, style):
+	"""
+	Format arg based on style
+
+	:param arg: JsArg javascript argument
+	:param style: code style
+
+	:return: str formatted arg string
+	"""
+	# default NORMAL jsodc style
+	return "* @param {%s} %s" % (arg.type if arg.type else "TODO", arg)
+
+
+def write_jsdoc_args(args, snip):
+	"""
+	Writes jsdoc of args.
+
+	:param args: list of JsArg
+	:param snip: UltiSnips.TextObjects.SnippetUtil object instance
+	"""
+	if not args:
+		return
+
+	# snip.rv += '\n' + snip.mkline('', indent='')
+
+	style = get_style(snip)
+
+	for arg in args:
+		snip += format_arg(arg, style)
+	
+
+def format_return(style):
+	return "* @returns {TODO}"
+
+
+
+def write_function_jsdoc(t, snip):
+	"""
+	Writes a function jsdoc.
+
+	:param t: The values of the placeholders
+	:param snip: UltiSnips.TextObjects.SnippetUtil object instance
+	"""
+	# snip.rv = ""
+	snip += "/**"
+	snip.rv += '\n' + snip.mkline("* TODO: What does this function do?", indent='')
+	snip.rv += '\n' + snip.mkline("*", indent='')
+	args = get_args(t[2])
+	if args:
+		write_jsdoc_args(args, snip)
+
+	style = get_style(snip)
+
+	snip += format_return(style)
+	# snip += triple_quotes(snip)
+	snip += "*/"
+
+endglobal
+
+snippet function "function with jsdoc"
+`!p write_function_jsdoc(t, snip)`
+function ${1:SomeFunction}($2){
+	${0:${VISUAL:\/\/ Code here}}
+}
+endsnippet
