@@ -157,6 +157,7 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # cs50
 # configure clang
-export CC=clang
-export CFLAGS="-fsanitize=integer -fsanitize=undefined -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wshadow -Wno-unused-variable -Wno-unused-parameter"
-export LDLIBS="-lcrypt -lcs50 -lm"
+# export CC=clang
+# export CFLAGS="-fsanitize=integer -fsanitize=undefined -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wshadow -Wno-unused-variable -Wno-unused-parameter"
+# export LDLIBS="-lcrypt -lcs50 -lm"
+alias make50=CC=clang CFLAGS="-fsanitize=integer -fsanitize=undefined -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wshadow -Wno-unused-variable -Wno-unused-parameter" LDLIBS="-lcrypt -lcs50 -lm" make
