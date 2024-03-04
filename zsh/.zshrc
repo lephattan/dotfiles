@@ -77,8 +77,6 @@ plugins=(git zsh-autosuggestions zsh-interactive-cd tmux)
 
 source $ZSH/oh-my-zsh.sh
 
-# Loading homebrew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -146,18 +144,15 @@ fi
 # Fig post block. Keep at the bottom of this file.
 export GTK_IM_MODULE=ibus
 
-# bun completions
-[ -s "/home/tanle/.bun/_bun" ] && source "/home/tanle/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-
 # cs50
 # configure clang
 # export CC=clang
 # export CFLAGS="-fsanitize=integer -fsanitize=undefined -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wshadow -Wno-unused-variable -Wno-unused-parameter"
 # export LDLIBS="-lcrypt -lcs50 -lm"
 alias make50=CC=clang CFLAGS="-fsanitize=integer -fsanitize=undefined -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wshadow -Wno-unused-variable -Wno-unused-parameter" LDLIBS="-lcrypt -lcs50 -lm" make
+
+# Loading more configurations if found
+for i in ~/.moredotfiles/zsh/*.zshrc; do
+    [ -f "$i" ] || break
+    source "$i"
+done
