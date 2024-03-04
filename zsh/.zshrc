@@ -152,7 +152,8 @@ export GTK_IM_MODULE=ibus
 alias make50=CC=clang CFLAGS="-fsanitize=integer -fsanitize=undefined -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wshadow -Wno-unused-variable -Wno-unused-parameter" LDLIBS="-lcrypt -lcs50 -lm" make
 
 # Loading more configurations if found
-for i in ~/.moredotfiles/zsh/*.zshrc; do
-    [ -f "$i" ] || break
-    source "$i"
+for f in ~/.moredotfiles/zsh/*.zshrc(.N); do
+# for i in ~/.moredotfiles/zsh/*.zshrc; do
+    # [ -f "$i" ] || break
+    source "$f"
 done
