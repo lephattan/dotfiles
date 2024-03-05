@@ -118,7 +118,7 @@ require('lazy').setup({
           -- 'haskell_persistent',
           -- 'hcl',
           -- 'heex',
-          'helm',
+          -- 'helm',
           -- 'hjson',
           -- 'hlsl',
           -- 'hlsplaylist',
