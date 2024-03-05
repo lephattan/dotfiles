@@ -73,7 +73,34 @@ ZSH_THEME="agnoster"
 export ZSH_TMUX_AUTOSTART=true
 export ZSH_TMUX_AUTOQUIT=false
 
-plugins=(git zsh-autosuggestions zsh-interactive-cd tmux)
+# plugins=(git zsh-autosuggestions zsh-interactive-cd tmux)
+
+## Antigen auto install
+antigenrc=~/antigen.zsh
+if  [ ! -f $antigenrc ]; then
+  echo "Installing antigen to $antigenrc";
+  curl -L git.io/antigen > $antigenrc || echo "Cannot get antigen";
+fi;
+
+_LoadAntigen () 
+{
+  source $antigenrc;
+  # Load the oh-my-zsh's library.
+  antigen use oh-my-zsh
+
+  # Bundles from the default repo (robbyrussell's oh-my-zsh).
+  antigen bundles <<EOBUNDLES
+  git
+  zsh-users/zsh-autosuggestions
+  zsh-interactive-cd
+  tmux
+EOBUNDLES
+
+  # Tell Antigen that you're done.
+  antigen apply
+}
+_LoadAntigen || echo "Cannot load antigen";
+
 
 source $ZSH/oh-my-zsh.sh
 
