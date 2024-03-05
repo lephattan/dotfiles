@@ -342,10 +342,7 @@ require('lazy').setup({
             colored_indent_levels = false,
           },
           markdown = true,
-          dap = {
-            enabled = true,
-            enable_ui = true, -- enable nvim-dap-ui
-          }
+          dap = true,
         },
       })
     end
