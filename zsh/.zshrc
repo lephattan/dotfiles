@@ -94,6 +94,8 @@ _LoadAntigen ()
   zsh-users/zsh-autosuggestions
   zsh-interactive-cd
   tmux
+
+  zsh-users/zsh-syntax-highlighting # keep this the last bundle
 EOBUNDLES
 
   # Tell Antigen that you're done.
