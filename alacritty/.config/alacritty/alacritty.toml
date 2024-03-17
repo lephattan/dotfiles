@@ -1,3 +1,7 @@
 [window]
 decorations = "None"
 padding = {x=3, y=0}
+
+[font]
+normal = {family = "Hack Nerd Font Mono", style = "Regular"}
+size = 12
