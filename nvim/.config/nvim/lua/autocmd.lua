@@ -80,3 +80,12 @@ create_autocmd({ "BufNewFile", "BufRead" }, {
   setlocal filetype=gotmpl
   ]],
 })
+
+create_autocmd({ "BufWritePost" }, {
+  pattern = { ".tmux.conf" },
+  callback = function()
+    vim.notify("reload tmux conf file", nil, {})
+    vim.fn.jobstart("tmux source-file ~/.tmux.conf")
+  end
+
+})
