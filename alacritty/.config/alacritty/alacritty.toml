@@ -1,10 +1,11 @@
 import = [
-  "~/.config/alacritty/themes/catppuccin/catppuccin-macchiato.toml",
+  "~/.config/alacritty/themes/catppuccin/catppuccin-mocha.toml",
 ]
 
 [window]
 decorations = "None"
 padding = {x = 3, y = 0}
+startup_mode = "Fullscreen"
 
 [font]
 normal = {family = "Hack Nerd Font Mono", style = "Regular"}
@@ -12,3 +13,9 @@ size = 12
 
 [env]
 TERM = "xterm-256color"
+
+[keyboard]
+bindings = [
+  {key = "F11", action = "ToggleFullscreen"},
+  {key = "Q", mods = "Control", action = "Quit"},
+]
