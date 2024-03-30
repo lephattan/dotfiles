@@ -188,3 +188,7 @@ for f in ~/.moredotfiles/zsh/*.zsh(.N); do
     # [ -f "$i" ] || break
     source "$f"
 done
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+export PATH="$HOME/.tmux/plugins/tmuxifier/bin:$PATH"
+eval "$(tmuxifier init -)"
