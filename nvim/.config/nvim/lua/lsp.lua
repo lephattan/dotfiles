@@ -47,6 +47,20 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
+--- Load per project rust analyzer config file
+local function get_project_rustanalyzer_settings()
+  local handle = io.open(vim.fn.resolve(vim.fn.getcwd() .. '/./.rust-analyzer.json'))
+  if not handle then
+    return {}
+  end
+  local out = handle:read("*a")
+  handle:close()
+  local config = vim.json.decode(out)
+  if type(config) == "table" then
+    return config
+  end
+  return {}
+end
 
 local servers = {
   pyright = {},
@@ -72,11 +86,24 @@ local servers = {
   dockerls = {},
   bashls = {},
   rust_analyzer = {
-    ["rust-analyzer"] = {
-      diagnostics = {
-        disabled = { "unresolved-proc-macro" },
+    -- ["rust-analyzer"] = {
+    --   diagnostics = {
+    --     disabled = { "unresolved-proc-macro" },
+    --   },
+    -- }
+    ["rust-analyzer"] = vim.tbl_deep_extend(
+      "force",
+      {
+        -- Defaults can be overridden by .rust-analyzer.json
+        diagnostics = {
+          disabled = { "unresolved-proc-macro" },
+        },
       },
-    }
+      get_project_rustanalyzer_settings(),
+      {
+        -- Overrides forces these regardless of what's in .rust-analyzer.json
+      }
+    )
   },
   tsserver = {},
   unocss = {},
