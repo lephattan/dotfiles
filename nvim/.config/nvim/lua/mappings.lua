@@ -5,4 +5,4 @@ keymap('n', '<leader>=', ':resize +5<cr>', { desc = "[=] Horizontal expand by 5 
 keymap('n', '<leader>-', ':resize -5<cr>', { desc = "[-] Horizontal shrink by 5 cols" })
 keymap('i', '<C-c>', '<Esc>', { desc = "Ctr-c to exit insert mode" })
 keymap('t', '<esc>', '<C-\\><C-n>', { desc = "[Esc] to exit insert in term" })
-keymap('n', '<leader>s', '<cmd>so $XDG_CONFIG_HOME/nvim/init.lua<CR>', { desc = "[S]ource config file" })
+keymap('n', '<leader>s', '<cmd>so ~/.config/nvim/init.lua<CR>', { desc = "[S]ource config file" })
