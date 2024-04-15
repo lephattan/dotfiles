@@ -530,14 +530,14 @@ require('lazy').setup({
   {
     -- Comment string context
     'JoosepAlviste/nvim-ts-context-commentstring',
-    config = function()
-      require 'nvim-treesitter.configs'.setup {
-        enable_autocmd = false,
-        languages = {
-          typescript = '// %s',
-        },
-      }
-    end
+    -- config = function()
+    --   require 'nvim-treesitter.configs'.setup {
+    --     enable_autocmd = false,
+    --     languages = {
+    --       typescript = '// %s',
+    --     },
+    --   }
+    -- end
   },
   {
     -- Comment
@@ -706,7 +706,7 @@ require('lazy').setup({
   {
     -- 'jose-elias-alvarez/null-ls.nvim',
     'nvimtools/none-ls.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = { 'nvim-lua/plenary.nvim', 'nvimtools/none-ls-extras.nvim' },
     config = function()
       local null_ls = require('null-ls')
 
@@ -745,13 +745,11 @@ require('lazy').setup({
 
       null_ls.setup({
         sources = {
-          null_ls.builtins.diagnostics.flake8,
-          -- null_ls.builtins.diagnostics.eslint_d,
+          require("none-ls.diagnostics.flake8"),
+          require("none-ls.code_actions.eslint_d"),
           null_ls.builtins.code_actions.gitsigns,
-          null_ls.builtins.code_actions.eslint_d,
           null_ls.builtins.formatting.prettierd.with { disabled_filetypes = { 'html' } },
           null_ls.builtins.formatting.black,
-          -- null_ls.builtins.formatting.clang_format,
           style50,
         },
       })
