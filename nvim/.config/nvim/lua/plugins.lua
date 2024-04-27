@@ -839,6 +839,22 @@ require('lazy').setup({
         relative = "editor",
       }
     },
+    {
+      "ray-x/lsp_signature.nvim",
+      event = "VeryLazy",
+      opts = {},
+      config = function(_, opts) require 'lsp_signature'.setup(opts) end
+    },
+    {
+      'stevearc/oil.nvim',
+      opts = {},
+      -- Optional dependencies
+      dependencies = { "nvim-tree/nvim-web-devicons" },
+      config = function()
+        vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+        require("oil").setup()
+      end
+    }
   },
 
   require 'lsp-debug',
