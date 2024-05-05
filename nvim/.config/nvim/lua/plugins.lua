@@ -286,6 +286,9 @@ require('lazy').setup({
           statusline = { 'NvimTree' }
         }
       },
+      sections = {
+        lualine_x = { 'rest', 'encoding', 'fileformat', 'filetype' },
+      }
     },
   },
 
@@ -650,7 +653,31 @@ require('lazy').setup({
         vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
         require("oil").setup()
       end
-    }
+    },
+    {
+      "vhyrro/luarocks.nvim",
+      priority = 1000,
+      config = true,
+      opts = {
+        -- this does not work, have to install rocks manually
+        -- rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" }
+      }
+    },
+    {
+      "rest-nvim/rest.nvim",
+      ft = "http",
+      dependencies = { "luarocks.nvim", },
+      config = function()
+        require("rest-nvim").setup({})
+
+        require("telescope").load_extension("rest")
+        keymap("n", "<localleader>rr", "<cmd>Rest run<cr>", { desc = "[R]est [r]un under cursor" })
+        keymap("n", "<localleader>re", "<cmd>Telescope rest select_env<cr>", { desc = "[R]est [E]nv" })
+        keymap("n", "<localleader>rl", "<cmd>Rest run last<cr>", { desc = "[R]est re-run [l]ast request" })
+        keymap("n", "<localleader>rs", "<cmd>Rest result next<cr>", { desc = "[R]est re[s]ult next" })
+        keymap("n", "<localleader>rp", "<cmd>Rest result prev<cr>", { desc = "[R]est result [p]rev" })
+      end,
+    },
   },
 
   require 'lsp-debug',
