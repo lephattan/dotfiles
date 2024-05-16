@@ -15,7 +15,7 @@ local on_attach = function(client, buffer)
   end
   -- Diagnostic keymaps
   nmap('K', vim.lsp.buf.hover, "LSP: Hover document", buffer)
-  nmap('<c-h>', vim.lsp.buf.signature_help, "LSP: Signature [h]elp", buffer)
+  -- nmap('<c-h>', vim.lsp.buf.signature_help, "LSP: Signature [h]elp", buffer)
   imap('<c-h>', vim.lsp.buf.signature_help, "LSP: Signature [h]elp", buffer)
 
   nmap('<leader>rn', vim.lsp.buf.rename, 'LSP: [R]e[n]ame', buffer)

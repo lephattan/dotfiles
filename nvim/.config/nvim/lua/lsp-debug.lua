@@ -137,8 +137,8 @@ return {
     keymap('n', '<leader>lp', function() require 'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end,
       { desc = "Toggle [L]og [P]oint" })
 
-    keymap('n', '<C-k>', function() require 'dap'.step_into() end, { desc = "DAP Step Into" })
-    keymap('n', '<C-j>', function() require 'dap'.step_over() end, { desc = "DAP Step Over" })
-    keymap('n', '<C-h>', function() require 'dap'.step_out() end, { desc = "DAP Step Out" })
+    -- keymap('n', '<C-k>', function() require 'dap'.step_into() end, { desc = "DAP Step Into" })
+    -- keymap('n', '<C-j>', function() require 'dap'.step_over() end, { desc = "DAP Step Over" })
+    -- keymap('n', '<C-h>', function() require 'dap'.step_out() end, { desc = "DAP Step Out" })
   end,
 }

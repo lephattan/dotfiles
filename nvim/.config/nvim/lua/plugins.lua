@@ -573,10 +573,11 @@ require('lazy').setup({
     "christoomey/vim-tmux-navigator",
     lazy = false,
     config = function()
-      keymap('n', "<C-h>", "<cmd>TmuxNavigateLeft<cr>", { desc = "Jump to left pane" })
-      keymap('n', "<C-l>", "<cmd>TmuxNavigateRight<cr>", { desc = "Jump to right pane" })
-      keymap('n', "<C-j>", "<cmd>TmuxNavigateDown<cr>", { desc = "Jump to below pane" })
-      keymap('n', "<C-k>", "<cmd>TmuxNavigateUp<cr>", { desc = "Jump to upper pane" })
+      -- TODO: set keymaps for this
+      -- keymap('n', "<C-h>", "<cmd>TmuxNavigateLeft<cr>", { desc = "Jump to left pane" })
+      -- keymap('n', "<C-l>", "<cmd>TmuxNavigateRight<cr>", { desc = "Jump to right pane" })
+      -- keymap('n', "<C-j>", "<cmd>TmuxNavigateDown<cr>", { desc = "Jump to below pane" })
+      -- keymap('n', "<C-k>", "<cmd>TmuxNavigateUp<cr>", { desc = "Jump to upper pane" })
     end
   },
   {
