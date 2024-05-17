@@ -1,8 +1,6 @@
 local keymap = vim.keymap.set
 
--- keymap('n', '<leader>5', ':exe "vertical resize ".&columns*1/2<cr>', { desc = "Resize to [5]0% width" })
--- keymap('n', '<leader>=', ':resize +5<cr>', { desc = "[=] Horizontal expand by 5 cols" })
--- keymap('n', '<leader>-', ':resize -5<cr>', { desc = "[-] Horizontal shrink by 5 cols" })
+keymap('n', '<leader>x', "<cmd>so %<Cr>", { desc = "E[x]ecute current file" })
 keymap('i', '<C-c>', '<Esc>', { desc = "Ctr-c to exit insert mode" })
 keymap('t', '<esc>', '<C-\\><C-n>', { desc = "[Esc] to exit insert in term" })
 keymap('n', '<leader>s', '<cmd>so ~/.config/nvim/init.lua<CR>', { desc = "[S]ource config file" })
@@ -28,3 +26,9 @@ keymap("n", "<A-t>", "<C-W>+", { desc = "Make split [t]aller" })
 -- " shorter
 keymap("n", "<A-s>", "<C-W>-", { desc = "Make split [s]horter" })
 -- nnoremap <A-s> <C-W>-
+
+-- No arrow keys when inserting
+keymap("i", "<Up>", "<C-o>:echom \"--> k <--\"<CR>")
+keymap("i", "<Down>", "<C-o>:echom \"--> j <--\"<CR>")
+keymap("i", "<Left>", "<C-o>:echom \"--> h <--\"<CR>")
+keymap("i", "<Right>", "<C-o>:echom \"--> l <--\"<CR>")
