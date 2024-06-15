@@ -170,7 +170,12 @@ require('lazy').setup({
     'hrsh7th/nvim-cmp',
     dependencies = {
       'SirVer/ultisnips',
-      'quangnguyen30192/cmp-nvim-ultisnips',
+      {
+        'quangnguyen30192/cmp-nvim-ultisnips',
+        config = function()
+          require("cmp_nvim_ultisnips").setup {}
+        end
+      },
       { "windwp/nvim-autopairs", opts = {} },
 
       -- Adds LSP completion capabilities
