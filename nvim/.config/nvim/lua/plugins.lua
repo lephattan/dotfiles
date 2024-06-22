@@ -648,12 +648,20 @@ require('lazy').setup({
     },
     {
       'stevearc/oil.nvim',
-      opts = {},
       -- Optional dependencies
       dependencies = { "nvim-tree/nvim-web-devicons" },
       config = function()
         vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-        require("oil").setup()
+        require("oil").setup({
+          delete_to_trash = true,
+          view_options = {
+            show_hidden = true,
+            is_always_hidden = function(name, _)
+              return name == '..'
+              -- return false
+            end,
+          }
+        })
       end
     },
     {
