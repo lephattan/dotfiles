@@ -111,6 +111,7 @@ local servers = {
   gopls = {},
   sqlls = {},
   clangd = {},
+  svelte = {},
 }
 
 local ext_servers = {
