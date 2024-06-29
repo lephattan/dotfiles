@@ -6,7 +6,6 @@ return {
   lazy = true,
   config = function()
     require("trouble").setup {}
-    -- FIXME: conflict keymap with <leader>x
     keymap('n', '<leader>xx', '<cmd>TroubleToggle<cr>', { desc = "Toggle [X]Trouble" })
     keymap('n', '<leader>xw', '<cmd>TroubleToggle workspace_diagnostics<cr>',
       { desc = "Toggle [X]Trouble [W]orkspace" })
