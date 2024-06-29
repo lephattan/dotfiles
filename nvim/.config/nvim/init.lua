@@ -18,11 +18,24 @@ if not vim.loop.fs_stat(lazypath) then
   }
 end
 vim.opt.rtp:prepend(lazypath)
--- Actually load plugin
-require("plugins")
-require("settings")
-require("lsp")
-require('autocmd')
-
+-- Setup lazy.nvim
+require("lazy").setup({
+  spec = {
+    -- import your plugins
+    { import = "plugins" },
+  },
+  -- Configure any other settings here. See the documentation for more details.
+  -- colorscheme that will be used when installing plugins.
+  -- install = { colorscheme = { "habamax" } },
+  -- automatically check for plugin updates
+  checker = { enabled = true },
+  ui = {
+    border = "rounded"
+  }
+})
 vim.cmd.colorscheme "catppuccin"
-require("style") -- custom style
+
+require "settings"
+require "lsp"
+require "autocmd"
+require("style")
