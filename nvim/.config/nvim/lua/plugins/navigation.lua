@@ -32,6 +32,10 @@ return {
             return name == '..'
             -- return false
           end,
+        },
+        keymaps = {
+          ["<C-v>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
+          ["<C-h>"] = false,
         }
       })
     end
