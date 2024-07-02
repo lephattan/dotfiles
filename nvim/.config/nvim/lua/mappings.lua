@@ -1,6 +1,6 @@
 local keymap = vim.keymap.set
 
-keymap('n', '<leader>x', "<cmd>so %<Cr>", { desc = "E[x]ecute current file" })
+-- keymap('n', '<leader>x', "<cmd>so %<Cr>", { desc = "E[x]ecute current file" })
 keymap('i', '<C-c>', '<Esc>', { desc = "Ctr-c to exit insert mode" })
 keymap('t', '<esc>', '<C-\\><C-n>', { desc = "[Esc] to exit insert in term" })
 keymap('n', '<leader>s', '<cmd>so ~/.config/nvim/init.lua<CR>', { desc = "[S]ource config file" })
