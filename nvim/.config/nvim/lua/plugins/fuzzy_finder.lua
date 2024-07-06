@@ -6,23 +6,41 @@ return {
     -- branch = '0.1.x',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
-      local actions = require("telescope.actions")
+      -- local actions = require("telescope.actions")
       require('telescope').setup({
         defaults = {
+          file_ignore_patterns = {
+            "^.git/",
+            "^node_modules/",
+            "^.idea/",
+            "^.vscode/",
+            "^.env/",
+          },
           layout_strategy = 'vertical',
           layout_config = { height = 0.95 },
           mappings = {
             i = {
               ["<C-u>"] = false,
               ["<C-d>"] = false,
-              ["<esc>"] = actions.close,
+              -- ["<esc>"] = actions.close,
             },
           }
         },
       })
-      keymap('n', '<leader>ff', require('telescope.builtin').find_files, { desc = '[F]ind files' })
-      keymap('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[F]ind by [G]rep' })
-      keymap('n', '<leader>fb', require('telescope.builtin').buffers, { desc = '[F]ind [B]uffers' })
+      keymap('n', '<leader>ff', function()
+        require('telescope.builtin').find_files({ hidden = true, no_ignore = true })
+      end, { desc = '[F]ind files' })
+      keymap('n', '<leader>fg', function()
+        require('telescope.builtin').live_grep({ hidden = true, no_ignore = true })
+      end, { desc = '[F]ind by [G]rep' })
+      keymap('n', '<leader>fb', function()
+        local actions = require("telescope.actions")
+        require('telescope.builtin').buffers({
+          mappings = {
+            ["<C-d>"] = actions.delete_buffer + actions.move_to_top,
+          }
+        })
+      end, { desc = '[F]ind [B]uffers' })
       keymap('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = '[F]ind [H]elp tags' })
       keymap('n', '<leader>ft', '<cmd>TodoTelescope<cr>', { desc = '[F]ind [T]ODOS' })
       keymap('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
@@ -32,7 +50,7 @@ return {
           },
           function(input)
             if input then
-              require('telescope.builtin').grep_string({ search = input });
+              require('telescope.builtin').grep_string({ search = input, hidden = true, no_ignore = true });
             end
           end
         )
