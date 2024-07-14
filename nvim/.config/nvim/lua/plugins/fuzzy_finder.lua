@@ -12,6 +12,7 @@ return {
           file_ignore_patterns = {
             "^.git/",
             "^node_modules/",
+            "**/node_modules/",
             "^.idea/",
             "^.vscode/",
             "^.env/",
