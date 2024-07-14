@@ -65,7 +65,13 @@ end
 local servers = {
   pyright = {},
   intelephense = {},
-  cssls = {},
+  cssls = {
+    css = {
+      lint = {
+        unknownAtRules = 'ignore',
+      },
+    },
+  },
   -- vuels = {},
   volar = {
     filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
