@@ -3,6 +3,9 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 require('mappings')
 
+require "settings"
+require("project-conf").setup({})
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -32,11 +35,13 @@ require("lazy").setup({
   ui = {
     border = "rounded"
   },
+  change_detection = {
+    enabled = false
+  }
 
 })
 vim.cmd.colorscheme "catppuccin"
 
-require "settings"
 require "lsp"
 require "autocmd"
 require("style")

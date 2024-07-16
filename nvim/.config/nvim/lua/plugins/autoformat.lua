@@ -2,11 +2,12 @@ return {
   'neovim/nvim-lspconfig',
   config = function()
     -- Switch for controlling whether you want autoformatting.
-    --  Use :KickstartFormatToggle to toggle autoformatting on or off
-    local format_is_enabled = true
-    vim.api.nvim_create_user_command('KickstartFormatToggle', function()
-      format_is_enabled = not format_is_enabled
-      print('Setting autoformatting to: ' .. tostring(format_is_enabled))
+    --  Use :FormatToggle to toggle autoformatting on or off
+    local project_conf = require("project-conf")
+    local project = project_conf.options.project
+    vim.api.nvim_create_user_command('FormatToggle', function()
+      project.auto_format = not project.auto_format
+      print('Setting autoformatting to: ' .. tostring(project.auto_format))
     end, {})
 
     -- Create an augroup that is used for managing our formatting autocmds.
@@ -15,7 +16,7 @@ return {
     local _augroups = {}
     local get_augroup = function(client)
       if not _augroups[client.id] then
-        local group_name = 'kickstart-lsp-format-' .. client.name
+        local group_name = 'lsp-format-' .. client.name
         local id = vim.api.nvim_create_augroup(group_name, { clear = true })
         _augroups[client.id] = id
       end
@@ -51,7 +52,7 @@ return {
           group = get_augroup(client),
           buffer = bufnr,
           callback = function()
-            if not format_is_enabled then
+            if not project.auto_format then
               return
             end
 
