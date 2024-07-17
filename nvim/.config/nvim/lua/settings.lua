@@ -8,8 +8,8 @@ g.python3_host_prog = vim.call('expand', '~/.envs/nvim/bin/python3')
 g.python_highlight_all = 1
 g.indentLine_setConceal = 0
 o.clipboard = "unnamedplus"
-o.hlsearch = false -- no hightlight on search
-o.undofile = true  -- Save undo history
+o.hlsearch = true -- hightlight on search
+o.undofile = true -- Save undo history
 -- Case insensitive searching UNLESS /C or capital in search
 o.ignorecase = true
 o.smartcase = true
