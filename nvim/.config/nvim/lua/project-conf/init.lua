@@ -21,6 +21,10 @@ M.defaults = {
   ---@class ProjectOptions
   project = {
     auto_format = true,
+    vim_options = {},
+    telescope = {
+      file_ignore_patterns = {}
+    }
   },
 }
 
@@ -33,15 +37,15 @@ function M.setup(opts)
   end
 
   local project_conf_file = vim.fn.getcwd() .. "/" .. M.options.config_file
-  local ok, project_module = pcall(dofile, project_conf_file)
+  local ok, project_conf = pcall(dofile, project_conf_file)
   if not ok then
     return
   end
   print("Project config loaded from " .. M.options.config_file)
+  M.options.project = M.extend(M.defaults.project, project_conf)
 
-  if type(project_module.config) == "function" then
-    local project_conf = project_module.config()
-    M.options.project = M.extend(M.defaults.project, project_conf)
+  for option, value in pairs(M.options.project.vim_options) do
+    vim.o[option] = value
   end
 end
 

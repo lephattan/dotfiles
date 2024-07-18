@@ -7,16 +7,26 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       -- local actions = require("telescope.actions")
+      local project_conf = require("project-conf")
+      local file_ignore_patterns = {
+        "^.git/",
+        "^node_modules/",
+        "**/node_modules/",
+        "^.idea/",
+        "^.vscode/",
+        "^.env/",
+      }
+
+      for _, value in pairs(project_conf.options.project.telescope.file_ignore_patterns) do
+        table.insert(file_ignore_patterns, value)
+      end
+      -- for key, value in pairs(file_ignore_patterns) do
+      --   print(key, value)
+      -- end
+
       require('telescope').setup({
         defaults = {
-          file_ignore_patterns = {
-            "^.git/",
-            "^node_modules/",
-            "**/node_modules/",
-            "^.idea/",
-            "^.vscode/",
-            "^.env/",
-          },
+          file_ignore_patterns = file_ignore_patterns,
           layout_strategy = 'vertical',
           layout_config = { height = 0.95 },
           mappings = {
