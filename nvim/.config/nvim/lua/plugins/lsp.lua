@@ -12,9 +12,6 @@ return {
       },
       'williamboman/mason-lspconfig.nvim',
 
-      -- Useful status updates for LSP
-      { 'j-hui/fidget.nvim', opts = { window = { blend = 0, border = "none" }, align = { bottom = false }, }, },
-
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
     },
