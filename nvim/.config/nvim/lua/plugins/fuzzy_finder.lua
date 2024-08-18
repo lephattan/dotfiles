@@ -61,7 +61,7 @@ return {
           },
           function(input)
             if input then
-              require('telescope.builtin').grep_string({ search = input, hidden = true, no_ignore = true });
+              require('telescope.builtin').grep_string({ search = input, additional_args = { hidden = true, no_ignore = true } });
             end
           end
         )
