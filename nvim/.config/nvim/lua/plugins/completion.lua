@@ -88,6 +88,14 @@ return {
         'confirm_done',
         cmp_autopairs.on_confirm_done()
       )
+
+      -- Setup up vim-dadbod
+      cmp.setup.filetype({ "sql" }, {
+        sources = {
+          { name = "vim-dadbod-completion" },
+          { name = "buffer" },
+        },
+      })
     end
   },
   {
