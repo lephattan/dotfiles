@@ -89,3 +89,14 @@ create_autocmd({ "BufWritePost" }, {
   end
 
 })
+
+-- Set json filetype formatter to `jq`
+-- a work around for rest.nvim due to an issue in json response formating
+-- @link https://github.com/rest-nvim/rest.nvim/issues/414
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "json",
+  callback = function(ev)
+    -- vim.bo.formatexpr = "v:lua.vim.lsp.formatexpr()"
+    vim.bo[ev.buf].formatprg = "jq"
+  end,
+})
