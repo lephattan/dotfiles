@@ -41,7 +41,8 @@ function M.setup(opts)
   if not ok then
     return
   end
-  print("Project config loaded from " .. M.options.config_file)
+  vim.notify("Project config loaded from " .. M.options.config_file, vim.log.levels.INFO)
+  -- print("Project config loaded from " .. M.options.config_file)
   M.options.project = M.extend(M.defaults.project, project_conf)
 
   for option, value in pairs(M.options.project.vim_options) do
