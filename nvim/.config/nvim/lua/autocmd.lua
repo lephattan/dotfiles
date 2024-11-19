@@ -100,3 +100,9 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo[ev.buf].formatprg = "jq"
   end,
 })
+
+api.nvim_create_autocmd(
+  { 'BufNewFile', 'BufRead' }, {
+    pattern = { '*.go' },
+    command = [[ setlocal colorcolumn=80 ]]
+  })
