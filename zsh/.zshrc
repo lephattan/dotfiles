@@ -192,3 +192,8 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 export PATH="$HOME/.tmux/plugins/tmuxifier/bin:$PATH"
 eval "$(tmuxifier init -)"
+
+# Setting for the new UTF-8 terminal support in Lion
+# Fix for perl: warning: Setting locale failed.
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
