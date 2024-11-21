@@ -111,7 +111,7 @@ local servers = {
       }
     )
   },
-  tsserver = {},
+  ts_ls = {},
   unocss = {},
   yamlls = {},
   gopls = {},
