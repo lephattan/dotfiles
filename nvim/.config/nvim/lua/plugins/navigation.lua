@@ -36,6 +36,9 @@ return {
         keymaps = {
           ["<C-v>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
           ["<C-h>"] = false,
+          ["gy"] = { "actions.yank_entry", desc = "Yank the filepath of the entry under the cursor to a register" },
+          ["<C-l>"] = false,
+          ["gR"] = { "actions.refresh", desc = "[R]efresh" }
         }
       })
     end
@@ -45,9 +48,8 @@ return {
     dependencies = {
       'nvim-tree/nvim-web-devicons', -- optional, for file icons
     },
-    lazy = true,
+    -- lazy = true,
     config = function()
-      keymap('n', '<C-n>', ':NvimTreeToggle<cr>', { desc = "Toggle NvimTree" })
       require 'nvim-tree'.setup {
         git                 = {
           ignore = false,

@@ -10,6 +10,7 @@ keymap("n", "<C-K>", "<C-W><C-K>", { desc = "Move to upper split" })
 keymap("n", "<C-J>", "<C-W><C-J>", { desc = "Move to lower split" })
 keymap("n", "<C-H>", "<C-W><C-H>", { desc = "Move to left split" })
 keymap("n", "<C-L>", "<C-W><C-L>", { desc = "Move to right split" })
+keymap('n', '<C-n>', ':NvimTreeToggle<cr>', { desc = "Toggle NvimTree" })
 
 -- Resize
 keymap("n", "<leader>=", "<C-w>=", { desc = "Make windows to be the same size" })
