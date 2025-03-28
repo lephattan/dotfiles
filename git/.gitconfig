@@ -1,0 +1,11 @@
+[user]
+	name = tanle
+[alias]
+  wt = worktree
+  pr = pull --rebase
+  st = status
+  br = branch
+  # commnit
+  ci = commit
+  cia = commit --amend
+  co = checkout
