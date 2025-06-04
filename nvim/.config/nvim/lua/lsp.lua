@@ -136,6 +136,8 @@ mason_lspconfig.setup_handlers {
       settings = servers[server_name],
     }
   end,
+  ['ts_ls'] = function()
+  end
 }
 
 for server, settings in pairs(ext_servers) do
