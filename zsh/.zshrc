@@ -197,3 +197,4 @@ eval "$(tmuxifier init -)"
 # Fix for perl: warning: Setting locale failed.
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export MANPAGER="nvim +Man!"
