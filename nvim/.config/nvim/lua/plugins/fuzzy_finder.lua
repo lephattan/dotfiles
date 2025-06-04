@@ -15,6 +15,10 @@ return {
         "^.idea/",
         "^.vscode/",
         "^.env/",
+        "**/.next/",
+        "**/.pnpm-store/",
+        "^.pnpm-store/",
+        "^.next/"
       }
 
       for _, value in pairs(project_conf.options.project.telescope.file_ignore_patterns) do
@@ -39,7 +43,7 @@ return {
         },
       })
       keymap('n', '<leader>ff', function()
-        require('telescope.builtin').find_files({ hidden = true, no_ignore = true })
+        require('telescope.builtin').find_files({ hidden = true })
       end, { desc = '[F]ind files' })
       keymap('n', '<leader>fg', function()
         require('telescope.builtin').live_grep({ hidden = true, no_ignore = true })
@@ -61,7 +65,7 @@ return {
           },
           function(input)
             if input then
-              require('telescope.builtin').grep_string({ search = input, additional_args = { "--hidden", "--no-ignore" } });
+              require('telescope.builtin').grep_string({ search = input, additional_args = { "--hidden", "--no-ignore", "--pcre2" }, use_regex = true });
             end
           end
         )

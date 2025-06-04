@@ -52,6 +52,7 @@ return {
           null_ls.builtins.formatting.prettierd.with { disabled_filetypes = { 'html' } },
           null_ls.builtins.formatting.black,
           style50,
+          -- null_ls.builtins.formatting.biome
         },
       })
     end
