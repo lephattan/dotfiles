@@ -12,11 +12,13 @@ return {
 
     -- Debuggers here:
     'mfussenegger/nvim-dap-python',
+    'leoluz/nvim-dap-go',
   },
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
     local dappython = require('dap-python')
+    local dapgo = require('dap-go')
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
@@ -104,6 +106,8 @@ return {
       localSourceRoot = "${workspaceFolder}",
     })
 
+    dapgo.setup()
+
     dap.defaults.fallback.force_external_terminal = true
     vim.fn.sign_define('DapBreakpoint', { text = '🟥', texthl = '', linehl = '', numhl = '' })
     vim.fn.sign_define('DapBreakpointCondition', { text = '🟩', texthl = '', linehl = '', numhl = '' })
@@ -119,10 +123,7 @@ return {
 
     -- Mappings
     keymap('n', '<leader>dh', function() require "dap.ui.widgets".hover() end, { desc = "[D]ebug widgets [H]over" })
-    keymap('n', '<leader>dc', function()
-      require('dap.ext.vscode').load_launchjs();
-      dap.continue()
-    end, { desc = "[D]ebug [C]ontinue/start" })
+    keymap('n', '<leader>dc', function() dap.continue() end, { desc = "[D]ebug [C]ontinue/start" })
     keymap('n', '<leader>dt', function() require "dap".terminate() end, { desc = "[D]ebug [T]erminate session" })
     keymap('n', '<leader>dr', function() require "dap".repl.toggle({}, 'vsplit') end, { desc = "[D]ebug toogle [R]epl" })
     keymap('n', '<leader>dl', function() require "dap".run_last() end, { desc = "[D]ebug run [L]ast" })
@@ -137,8 +138,8 @@ return {
     keymap('n', '<leader>lp', function() require 'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end,
       { desc = "Toggle [L]og [P]oint" })
 
-    -- keymap('n', '<C-k>', function() require 'dap'.step_into() end, { desc = "DAP Step Into" })
-    -- keymap('n', '<C-j>', function() require 'dap'.step_over() end, { desc = "DAP Step Over" })
-    -- keymap('n', '<C-h>', function() require 'dap'.step_out() end, { desc = "DAP Step Out" })
+    keymap('n', '<F11>', function() require 'dap'.step_into() end, { desc = "DAP Step Into" })
+    keymap('n', '<S-F11>', function() require 'dap'.step_out() end, { desc = "DAP Step Out" })
+    keymap('n', '<F10>', function() require 'dap'.step_over() end, { desc = "DAP Step Over" })
   end,
 }
