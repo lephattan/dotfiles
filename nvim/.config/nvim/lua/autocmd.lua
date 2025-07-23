@@ -106,3 +106,10 @@ api.nvim_create_autocmd(
     pattern = { '*.go' },
     command = [[ setlocal colorcolumn=80 ]]
   })
+
+create_autocmd({ 'FileType' }, {
+  pattern = { 'javascript' },
+  callback = function()
+    vim.fn.setreg("l", 'yiwoconsole.log(pysiw"A, pA)')
+  end,
+})
