@@ -26,6 +26,10 @@ return {
       keymap("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
       require("oil").setup({
         delete_to_trash = true,
+        win_options = {
+          winbar =
+          "%#@attribute.builtin#%{substitute(v:lua.require('oil').get_current_dir(), '^' . v:lua.vim.fn.getcwd(), '.', '')}",
+        },
         view_options = {
           show_hidden = true,
           is_always_hidden = function(name, _)
