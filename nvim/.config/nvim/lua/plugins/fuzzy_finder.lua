@@ -88,5 +88,19 @@ return {
     cond = function()
       return vim.fn.executable 'make' == 1
     end,
-  }
+  },
+  {
+    "albenisolmos/telescope-oil.nvim",
+    config = function()
+      -- optionally override defaults
+      -- local settings = require("telescope-oil.settings")
+      -- settings.set({ hidden = true })
+      -- settings.set({ no_ignore = false })
+      -- settings.set({ show_preview = true })
+
+      -- load extension
+      require("telescope").load_extension("oil")
+      vim.keymap.set("n", "<leader>fo", "<cmd>Telescope oil<CR>", { noremap = true, silent = true })
+    end
+  },
 }
