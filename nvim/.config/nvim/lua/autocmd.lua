@@ -1,5 +1,6 @@
 local api = vim.api
 local create_autocmd = api.nvim_create_autocmd
+local create_augroup = api.nvim_create_augroup
 
 api.nvim_create_autocmd(
   { 'BufNewFile', 'BufRead' }, {
@@ -113,3 +114,13 @@ create_autocmd({ 'FileType' }, {
     vim.fn.setreg("l", 'yiwoconsole.log(pysiw"A, pA)')
   end,
 })
+
+local fugitive = create_augroup("fugitive", { clear = true })
+create_autocmd(
+  { 'FileType' },
+  {
+    pattern = { 'fugitiveblame' },
+    command = [[ setlocal winbar=fugitiveblame ]],
+    group = fugitive,
+  }
+)
