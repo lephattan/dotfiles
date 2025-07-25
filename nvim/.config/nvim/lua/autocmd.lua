@@ -115,7 +115,7 @@ create_autocmd({ 'FileType' }, {
   end,
 })
 
-local fugitive = create_augroup("fugitive", { clear = true })
+local fugitive = create_augroup("my-fugitive", { clear = true })
 create_autocmd(
   { 'FileType' },
   {
