@@ -47,6 +47,7 @@ o.softtabstop = 2
 o.smartindent = true
 o.mouse = nil
 o.ph = 10
+o.swapfile = false
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
