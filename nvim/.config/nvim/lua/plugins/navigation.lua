@@ -48,74 +48,36 @@ return {
     end
   },
   {
-    'kyazdani42/nvim-tree.lua',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons', -- optional, for file icons
-    },
-    -- lazy = true,
-    config = function()
-      require 'nvim-tree'.setup {
-        git                 = {
-          ignore = false,
+    "folke/edgy.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.opt.laststatus = 3
+      vim.opt.splitkeep = "screen"
+      keymap("n", "<c-n>", function() require("edgy").toggle("left") end)
+    end,
+    opts = {
+      left = {
+        {
+          ft = "trouble",
+          pinned = true,
+          title = "Symbols",
+          filter = function(_buf, win)
+            return vim.w[win].trouble.mode == "symbols"
+          end,
+          open = "Trouble symbols position=left focus=false filter.buf=0",
+          size = { height = 0.6 },
         },
-        actions             = {
-          open_file = {
-            quit_on_open = true,
-            window_picker = {
-              enable = true,
-              exclude = {
-                filetype = { 'notify', 'packer', 'qf' },
-                buftype = { 'terminal' }
-              },
-            },
-            resize_window = false,
-          }
-        },
-        disable_netrw       = true,
-        hijack_netrw        = true,
-        open_on_tab         = false,
-        hijack_cursor       = false,
-        update_cwd          = true,
-        diagnostics         = {
-          enable = false,
-          icons = {
-            hint = "",
-            info = "",
-            warning = "",
-            error = "",
-          }
-        },
-        update_focused_file = {
-          enable      = true,
-          update_cwd  = true,
-          ignore_list = {}
-        },
-        system_open         = {
-          cmd  = nil,
-          args = {}
-        },
-        filters             = {
-          dotfiles = false,
-          custom = {}
-        },
-        view                = {
-          width = 40,
-          -- height = 30,
-          side = 'left',
-          --auto_resize = false,
-          -- view.mappings is deprecated
-          -- mappings = {
-          --   custom_only = false,
-          --   list = {}
-          -- }
-        },
-        renderer            = {
-          indent_markers = {
-            enable = true,
-          },
-          root_folder_label = false,
+        {
+          ft = "trouble",
+          pinned = true,
+          title = "Trouble",
+          filter = function(_buf, win)
+            return vim.w[win].trouble.mode == "diagnostics"
+          end,
+          open = "Trouble diagnostics focus=false filter.severity=vim.diagnostic.severity.ERROR",
+          size = { height = 0.4 },
         },
       }
-    end
+    }
   },
 }
