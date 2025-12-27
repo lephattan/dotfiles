@@ -73,9 +73,9 @@ return {
     },
     main = "ibl"
   },
-  {
-    'mhinz/vim-startify'
-  },
+  -- {
+  --   'mhinz/vim-startify'
+  -- },
   {
     -- winbar
     "utilyre/barbecue.nvim",
